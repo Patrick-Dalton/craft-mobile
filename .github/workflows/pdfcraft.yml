@@ -108,7 +108,7 @@ jobs:
           cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/out/pdfcraft.apk"
           size=$(stat -c %s "$GITHUB_WORKSPACE/out/pdfcraft.apk")
           cat > "$GITHUB_WORKSPACE/out/pdfcraft.json" <<EOF
-          {"id":"pdfcraft","versionName":"$APP_VERSION","versionCode":${{ github.run_number }},"size":$size,"upstream":"$UPSTREAM_REPO@$UPSTREAM_REF"}
+          {"id":"pdfcraft","versionName":"$APP_VERSION","versionCode":${{ github.run_number }},"size":$size,"upstream":"$UPSTREAM_REPO@$UPSTREAM_REF","commit":"${{ github.sha }}"}
           EOF
 
       # Job logs need a signed-in admin to read; a release asset doesn't. On failure, publish the
@@ -119,7 +119,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           touch build.log gradle.log
-          { echo "run ${{ github.run_id }}"; grep -n -E '^(error|warning: unused)|^error\[|-->|^\s+\|' build.log | head -n 1500; echo '--- tail ---'; tail -n 200 build.log; echo '--- gradle ---'; grep -n -E 'error|FAILURE|What went wrong|e: |> ' gradle.log | head -n 300; tail -n 120 gradle.log; } > errors.txt
+          { echo "sha ${{ github.sha }} run ${{ github.run_id }}"; grep -n -E '^(error|warning: unused)|^error\[|-->|^\s+\|' build.log | head -n 1500 || true; echo '--- tail ---'; tail -n 200 build.log; echo '--- gradle ---'; grep -n -E 'error|FAILURE|What went wrong|e: |> ' gradle.log | head -n 300 || true; tail -n 120 gradle.log; } > errors.txt
           gh release delete pdfcraft-buildlog --cleanup-tag --yes || true
           gh release create pdfcraft-buildlog errors.txt build.log gradle.log --title "PdfCraft: log da última falha" --notes "Erros da compilação Android que falhou." --prerelease
 
