@@ -169,6 +169,182 @@ impl From<&Path> for FileHandle {
     }
 }
 
+// ---- Message boxes ------------------------------------------------------------------------------
+
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum MessageLevel {
+    #[default]
+    Info,
+    Warning,
+    Error,
+}
+
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub enum MessageButtons {
+    #[default]
+    Ok,
+    OkCancel,
+    YesNo,
+    YesNoCancel,
+    OkCustom(String),
+    OkCancelCustom(String, String),
+    YesNoCancelCustom(String, String, String),
+}
+
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub enum MessageDialogResult {
+    Yes,
+    No,
+    #[default]
+    Ok,
+    Cancel,
+    Custom(String),
+}
+
+impl std::fmt::Display for MessageDialogResult {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Yes => f.write_str("Yes"),
+            Self::No => f.write_str("No"),
+            Self::Ok => f.write_str("Ok"),
+            Self::Cancel => f.write_str("Cancel"),
+            Self::Custom(s) => f.write_str(s),
+        }
+    }
+}
+
+#[derive(Clone, Debug, Default)]
+pub struct MessageDialog {
+    level: MessageLevel,
+    title: String,
+    description: String,
+    buttons: MessageButtons,
+}
+
+impl MessageDialog {
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    pub fn set_level(mut self, level: MessageLevel) -> Self {
+        self.level = level;
+        self
+    }
+
+    pub fn set_title(mut self, title: impl Into<String>) -> Self {
+        self.title = title.into();
+        self
+    }
+
+    pub fn set_description(mut self, text: impl Into<String>) -> Self {
+        self.description = text.into();
+        self
+    }
+
+    pub fn set_buttons(mut self, buttons: MessageButtons) -> Self {
+        self.buttons = buttons;
+        self
+    }
+
+    pub fn set_parent<W: ?Sized>(self, _parent: &W) -> Self {
+        self
+    }
+
+    /// Shows the box and waits for the answer. The Rust app runs on its own thread, so this
+    /// blocks only that thread; Android's UI thread shows the dialog.
+    pub fn show(self) -> MessageDialogResult {
+        show_message(&self)
+    }
+}
+
+#[derive(Clone, Debug, Default)]
+pub struct AsyncMessageDialog(MessageDialog);
+
+impl AsyncMessageDialog {
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    pub fn set_level(self, level: MessageLevel) -> Self {
+        Self(self.0.set_level(level))
+    }
+
+    pub fn set_title(self, title: impl Into<String>) -> Self {
+        Self(self.0.set_title(title))
+    }
+
+    pub fn set_description(self, text: impl Into<String>) -> Self {
+        Self(self.0.set_description(text))
+    }
+
+    pub fn set_buttons(self, buttons: MessageButtons) -> Self {
+        Self(self.0.set_buttons(buttons))
+    }
+
+    pub fn set_parent<W: ?Sized>(self, _parent: &W) -> Self {
+        self
+    }
+
+    pub fn show(self) -> impl Future<Output = MessageDialogResult> + Send {
+        async move { show_message(&self.0) }
+    }
+}
+
+/// `craftMessage`'s button kinds: the activity labels the standard ones in the system's language.
+fn button_kind(buttons: &MessageButtons) -> (i32, Vec<String>) {
+    match buttons {
+        MessageButtons::Ok => (0, vec![]),
+        MessageButtons::OkCancel => (1, vec![]),
+        MessageButtons::YesNo => (2, vec![]),
+        MessageButtons::YesNoCancel => (3, vec![]),
+        MessageButtons::OkCustom(a) => (4, vec![a.clone()]),
+        MessageButtons::OkCancelCustom(a, b) => (4, vec![a.clone(), b.clone()]),
+        MessageButtons::YesNoCancelCustom(a, b, c) => (4, vec![a.clone(), b.clone(), c.clone()]),
+    }
+}
+
+/// The answer for the button the user pressed (0 = first), or for dismissing the box (-1).
+fn message_result(buttons: &MessageButtons, pressed: i32) -> MessageDialogResult {
+    use MessageDialogResult as R;
+    match (buttons, pressed) {
+        (MessageButtons::Ok, _) => R::Ok,
+        (MessageButtons::OkCancel, 0) => R::Ok,
+        (MessageButtons::OkCancel, _) => R::Cancel,
+        (MessageButtons::YesNo, 0) => R::Yes,
+        (MessageButtons::YesNo, _) => R::No,
+        (MessageButtons::YesNoCancel, 0) => R::Yes,
+        (MessageButtons::YesNoCancel, 1) => R::No,
+        (MessageButtons::YesNoCancel, _) => R::Cancel,
+        (MessageButtons::OkCustom(a), _) => R::Custom(a.clone()),
+        (MessageButtons::OkCancelCustom(a, _), 0) => R::Custom(a.clone()),
+        (MessageButtons::OkCancelCustom(_, b), _) => R::Custom(b.clone()),
+        (MessageButtons::YesNoCancelCustom(a, _, _), 0) => R::Custom(a.clone()),
+        (MessageButtons::YesNoCancelCustom(_, b, _), 1) => R::Custom(b.clone()),
+        (MessageButtons::YesNoCancelCustom(_, _, c), _) => R::Custom(c.clone()),
+    }
+}
+
+#[cfg(target_os = "android")]
+fn show_message(dialog: &MessageDialog) -> MessageDialogResult {
+    let (kind, labels) = button_kind(&dialog.buttons);
+    let level = match dialog.level {
+        MessageLevel::Info => 0,
+        MessageLevel::Warning => 1,
+        MessageLevel::Error => 2,
+    };
+    let pressed = android::message(level, &dialog.title, &dialog.description, kind, &labels).unwrap_or_else(|e| {
+        eprintln!("rfd (Android): message box failed: {e}");
+        -1
+    });
+    message_result(&dialog.buttons, pressed)
+}
+
+#[cfg(not(target_os = "android"))]
+fn show_message(dialog: &MessageDialog) -> MessageDialogResult {
+    let _ = button_kind(&dialog.buttons);
+    message_result(&dialog.buttons, -1)
+}
+
 /// The MIME types the picker should offer for the dialog's filters. An extension we don't
 /// know widens the choice to every file rather than hiding the one the user wants.
 fn mime_types(filters: &[(String, Vec<String>)]) -> Vec<String> {
@@ -273,6 +449,34 @@ mod android {
                 paths.push(PathBuf::from(path));
             }
             Ok(paths)
+        })();
+        if result.is_err() {
+            let _ = env.exception_clear();
+        }
+        result
+    }
+
+    pub(crate) fn message(level: i32, title: &str, text: &str, kind: i32, labels: &[String]) -> jni::errors::Result<i32> {
+        let ctx = ndk_context::android_context();
+        // SAFETY: as in `pick`.
+        let vm = unsafe { jni::JavaVM::from_raw(ctx.vm().cast()) }?;
+        let mut env = vm.attach_current_thread()?;
+        let activity = unsafe { JObject::from_raw(ctx.context().cast()) };
+        let result = (|| {
+            let array = env.new_object_array(labels.len() as i32, "java/lang/String", JObject::null())?;
+            for (i, label) in labels.iter().enumerate() {
+                let s = env.new_string(label)?;
+                env.set_object_array_element(&array, i as i32, s)?;
+            }
+            let title = env.new_string(title)?;
+            let text = env.new_string(text)?;
+            env.call_method(
+                &activity,
+                "craftMessage",
+                "(ILjava/lang/String;Ljava/lang/String;I[Ljava/lang/String;)I",
+                &[JValue::Int(level), JValue::Object(&title), JValue::Object(&text), JValue::Int(kind), JValue::Object(&array)],
+            )?
+            .i()
         })();
         if result.is_err() {
             let _ = env.exception_clear();

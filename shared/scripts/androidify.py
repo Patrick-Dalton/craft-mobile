@@ -71,10 +71,38 @@ craft-android-glue = {{ path = "{rel(shared / "glue", crate)}" }}
 """
 manifest.write_text(m, encoding="utf-8")
 
-# 4. Sources: run_native through the glue.
+# 4. Sources: run_native through the glue, and desktop-Linux code kept off Android.
+#
+# Rust counts Android as `unix`, so `cfg(all(unix, not(target_os = "macos")))` (the apps' way of
+# saying "Linux and the BSDs") also selects X11 and Wayland code on Android. Every cfg that names
+# unix and excludes macOS, but says nothing about Android, gets `not(target_os = "android")`.
+def linux_only(expr: str) -> bool:
+    return "unix" in expr and "macos" in expr and "android" not in expr
+
+
+def exclude_android(text: str) -> str:
+    out, i = [], 0
+    pattern = re.compile(r"\bcfg!?\(")
+    while True:
+        m = pattern.search(text, i)
+        if not m:
+            out.append(text[i:])
+            return "".join(out)
+        start = m.end()
+        depth, j = 1, start
+        while j < len(text) and depth:
+            depth += {"(": 1, ")": -1}.get(text[j], 0)
+            j += 1
+        inner = text[start : j - 1]
+        out.append(text[i:start])
+        out.append(f'all({inner}, not(target_os = "android"))' if linux_only(inner) else inner)
+        out.append(")")
+        i = j
+
+
 for src in (crate / "src").rglob("*.rs"):
     s = src.read_text(encoding="utf-8")
-    t = s.replace("eframe::run_native(", "craft_android_glue::run_native(")
+    t = exclude_android(s.replace("eframe::run_native(", "craft_android_glue::run_native("))
     if t != s:
         src.write_text(t, encoding="utf-8")
 

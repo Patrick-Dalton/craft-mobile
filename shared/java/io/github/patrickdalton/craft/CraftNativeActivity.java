@@ -297,6 +297,55 @@ public class CraftNativeActivity extends GameActivity {
         }
     }
 
+    // ---- Message boxes (rfd shim; called from the Rust thread, never the UI thread) ---------
+
+    private static final int BUTTONS_OK = 0;
+    private static final int BUTTONS_OK_CANCEL = 1;
+    private static final int BUTTONS_YES_NO = 2;
+    private static final int BUTTONS_YES_NO_CANCEL = 3;
+
+    /**
+     * Shows a message box and waits for it. Returns the index of the pressed button (0 = first),
+     * or -1 when the box was dismissed. {@code kind} is one of the BUTTONS_* constants, whose
+     * labels come from the system (in its language); 4 means {@code labels} gives them.
+     */
+    public int craftMessage(int level, String title, String text, int kind, String[] labels) {
+        final String[] buttons;
+        switch (kind) {
+            case BUTTONS_OK: buttons = new String[] {getString(android.R.string.ok)}; break;
+            case BUTTONS_OK_CANCEL: buttons = new String[] {getString(android.R.string.ok), getString(android.R.string.cancel)}; break;
+            case BUTTONS_YES_NO: buttons = new String[] {getString(android.R.string.yes), getString(android.R.string.no)}; break;
+            case BUTTONS_YES_NO_CANCEL:
+                buttons = new String[] {getString(android.R.string.yes), getString(android.R.string.no), getString(android.R.string.cancel)};
+                break;
+            default: buttons = labels != null && labels.length > 0 ? labels : new String[] {getString(android.R.string.ok)};
+        }
+        final CountDownLatch latch = new CountDownLatch(1);
+        final int[] pressed = {-1};
+        runOnUiThread(() -> {
+            android.app.AlertDialog.Builder b = new android.app.AlertDialog.Builder(this);
+            if (title != null && !title.isEmpty()) b.setTitle(title);
+            if (text != null && !text.isEmpty()) b.setMessage(text);
+            if (level == 2) b.setIconAttribute(android.R.attr.alertDialogIcon);
+            b.setPositiveButton(buttons[0], (d, w) -> pressed[0] = 0);
+            if (buttons.length > 1) b.setNegativeButton(buttons[1], (d, w) -> pressed[0] = 1);
+            if (buttons.length > 2) b.setNeutralButton(buttons[2], (d, w) -> pressed[0] = 2);
+            b.setOnDismissListener(d -> latch.countDown());
+            try {
+                b.show();
+            } catch (RuntimeException e) {
+                Log.w(TAG, "message box", e);
+                latch.countDown();
+            }
+        });
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        return pressed[0];
+    }
+
     // ---- Clipboard (arboard shim) -------------------------------------------------------------
 
     public String craftClipboardGet() {

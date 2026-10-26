@@ -69,6 +69,18 @@ impl Clipboard {
         Err(Error::ClipboardNotSupported)
     }
 
+    /// HTML isn't supported: the plain-text alternative goes to the clipboard when there is one.
+    pub fn set_html<'a, T: Into<Cow<'a, str>>>(&mut self, _html: T, alt_text: Option<T>) -> Result<(), Error> {
+        match alt_text {
+            Some(text) => self.set_text(text),
+            None => Err(Error::ClipboardNotSupported),
+        }
+    }
+
+    pub fn get_html(&mut self) -> Result<String, Error> {
+        Err(Error::ClipboardNotSupported)
+    }
+
     pub fn clear(&mut self) -> Result<(), Error> {
         platform::set_text("")
     }
