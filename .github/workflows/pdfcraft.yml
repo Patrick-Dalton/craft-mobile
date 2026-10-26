@@ -48,6 +48,8 @@ jobs:
         with:
           workspaces: upstream
           key: pdfcraft-android
+          # Keep the compiled dependencies when a later step fails, so the next try is fast.
+          cache-on-failure: true
 
       - name: Install cargo-ndk
         run: cargo install cargo-ndk --locked
@@ -64,18 +66,6 @@ jobs:
             -o "$GITHUB_WORKSPACE/apps/pdfcraft/android/app/src/main/jniLibs" \
             build --release --keep-going -p pdfcraft-android 2>&1 | tee "$GITHUB_WORKSPACE/build.log"
           ls -la "$GITHUB_WORKSPACE/apps/pdfcraft/android/app/src/main/jniLibs/arm64-v8a"
-
-      # Job logs need a signed-in admin to read; a release asset doesn't. On failure, publish the
-      # compiler's errors where anyone (and the person fixing them) can fetch them.
-      - name: Publish the build errors
-        if: failure()
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          touch build.log
-          { echo "run ${{ github.run_id }}"; grep -n -E '^(error|warning: unused)|^error\[|-->|^\s+\|' build.log | head -n 1500; echo '--- tail ---'; tail -n 200 build.log; } > errors.txt
-          gh release delete pdfcraft-buildlog --cleanup-tag --yes || true
-          gh release create pdfcraft-buildlog errors.txt build.log --title "PdfCraft: log da última falha" --notes "Erros da compilação Android que falhou." --prerelease
 
       - name: App icon
         run: |
@@ -120,6 +110,18 @@ jobs:
           cat > "$GITHUB_WORKSPACE/out/pdfcraft.json" <<EOF
           {"id":"pdfcraft","versionName":"$APP_VERSION","versionCode":${{ github.run_number }},"size":$size,"upstream":"$UPSTREAM_REPO@$UPSTREAM_REF"}
           EOF
+
+      # Job logs need a signed-in admin to read; a release asset doesn't. On failure, publish the
+      # compiler's errors where anyone (and the person fixing them) can fetch them.
+      - name: Publish the build errors
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          touch build.log gradle.log
+          { echo "run ${{ github.run_id }}"; grep -n -E '^(error|warning: unused)|^error\[|-->|^\s+\|' build.log | head -n 1500; echo '--- tail ---'; tail -n 200 build.log; echo '--- gradle ---'; grep -n -E 'error|FAILURE|What went wrong|e: |> ' gradle.log | head -n 300; tail -n 120 gradle.log; } > errors.txt
+          gh release delete pdfcraft-buildlog --cleanup-tag --yes || true
+          gh release create pdfcraft-buildlog errors.txt build.log gradle.log --title "PdfCraft: log da última falha" --notes "Erros da compilação Android que falhou." --prerelease
 
       - uses: actions/upload-artifact@v4
         with:
