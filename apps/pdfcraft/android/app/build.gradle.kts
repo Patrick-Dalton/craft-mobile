@@ -67,4 +67,7 @@ dependencies {
     // the library's prefab C++ layer, so prefab stays off.
     implementation("androidx.games:games-activity:4.4.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
+    // A Java-only app has no Kotlin plugin to align the stdlib: without the BOM, the old
+    // kotlin-stdlib-jdk7/jdk8 (1.6) duplicate classes of kotlin-stdlib 1.8.
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.22"))
 }
