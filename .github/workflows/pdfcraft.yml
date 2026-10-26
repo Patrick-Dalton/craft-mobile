@@ -102,8 +102,9 @@ jobs:
           CRAFT_KEY_ALIAS: ${{ secrets.CRAFT_KEY_ALIAS }}
           CRAFT_KEY_PASSWORD: ${{ secrets.CRAFT_KEY_PASSWORD }}
         run: |
-          gradle --no-daemon assembleRelease \
-            -PcraftVersionName="$APP_VERSION" -PcraftVersionCode="${{ github.run_number }}"
+          set -o pipefail
+          gradle --no-daemon --console=plain assembleRelease \
+            -PcraftVersionName="$APP_VERSION" -PcraftVersionCode="${{ github.run_number }}" 2>&1 | tee "$GITHUB_WORKSPACE/gradle.log"
           mkdir -p "$GITHUB_WORKSPACE/out"
           cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/out/pdfcraft.apk"
           size=$(stat -c %s "$GITHUB_WORKSPACE/out/pdfcraft.apk")
