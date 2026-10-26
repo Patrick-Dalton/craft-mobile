@@ -1,0 +1,21 @@
+[package]
+# Stands in for arboard on Android (patched in by the Android build only): text goes through
+# Android's ClipboardManager via the activity; images and file lists aren't supported.
+name = "arboard"
+version = "3.99.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[features]
+default = ["image-data"]
+# The real crate's features, so manifests that name them still resolve.
+image-data = []
+wayland-data-control = []
+core-graphics = []
+windows-sys = []
+image = []
+
+[target.'cfg(target_os = "android")'.dependencies]
+jni = "0.21"
+ndk-context = "0.1"

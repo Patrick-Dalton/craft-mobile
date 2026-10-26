@@ -1,0 +1,57 @@
+plugins {
+    id("com.android.application")
+}
+
+// The release workflow passes these; a local build gets placeholders.
+val craftVersionName = (findProperty("craftVersionName") as String?) ?: "0.0.0-dev"
+val craftVersionCode = ((findProperty("craftVersionCode") as String?) ?: "1").toInt()
+val keystore: String? = System.getenv("CRAFT_KEYSTORE")
+
+android {
+    namespace = "io.github.patrickdalton.craft.pdfcraft"
+    compileSdk = 35
+
+    defaultConfig {
+        applicationId = "io.github.patrickdalton.craft.pdfcraft"
+        minSdk = 26
+        targetSdk = 35
+        versionCode = craftVersionCode
+        versionName = craftVersionName
+        ndk { abiFilters += listOf("arm64-v8a") }
+    }
+
+    signingConfigs {
+        if (keystore != null) {
+            create("craft") {
+                storeFile = file(keystore)
+                storePassword = System.getenv("CRAFT_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("CRAFT_KEY_ALIAS")
+                keyPassword = System.getenv("CRAFT_KEY_PASSWORD")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            // Without the shared key (a repository secret), the runner's debug key signs it: it
+            // installs, but each build then needs the previous one uninstalled first.
+            signingConfig = signingConfigs.findByName("craft") ?: signingConfigs.getByName("debug")
+        }
+    }
+
+    sourceSets {
+        getByName("main") {
+            java.srcDir("../../../../shared/java")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    packaging {
+        jniLibs { useLegacyPackaging = true }
+    }
+}

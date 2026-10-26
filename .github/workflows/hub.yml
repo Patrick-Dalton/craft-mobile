@@ -1,0 +1,77 @@
+name: Craft Hub
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "hub/**"
+      - "catalog.json"
+      - ".github/workflows/hub.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: craft-hub
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bundle the catalog
+        run: mkdir -p hub/app/src/main/assets && cp catalog.json hub/app/src/main/assets/catalog.json
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.11.1"
+
+      - name: Signing key
+        env:
+          KEYSTORE_B64: ${{ secrets.CRAFT_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/craft.keystore"
+            echo "CRAFT_KEYSTORE=$RUNNER_TEMP/craft.keystore" >> "$GITHUB_ENV"
+          else
+            echo "::warning::No CRAFT_KEYSTORE_B64 secret: signing with a throwaway debug key."
+          fi
+
+      - name: Build the APK
+        working-directory: hub
+        env:
+          CRAFT_KEYSTORE_PASSWORD: ${{ secrets.CRAFT_KEYSTORE_PASSWORD }}
+          CRAFT_KEY_ALIAS: ${{ secrets.CRAFT_KEY_ALIAS }}
+          CRAFT_KEY_PASSWORD: ${{ secrets.CRAFT_KEY_PASSWORD }}
+        run: |
+          version="1.0.${{ github.run_number }}"
+          gradle --no-daemon assembleRelease -PcraftVersionName="$version" -PcraftVersionCode="${{ github.run_number }}"
+          mkdir -p "$GITHUB_WORKSPACE/out"
+          cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/out/hub.apk"
+          size=$(stat -c %s "$GITHUB_WORKSPACE/out/hub.apk")
+          echo "{\"id\":\"hub\",\"versionName\":\"$version\",\"versionCode\":${{ github.run_number }},\"size\":$size}" > "$GITHUB_WORKSPACE/out/hub.json"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hub-apk
+          path: out/
+
+      - name: Publish (hub-latest)
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete hub-latest --cleanup-tag --yes || true
+          gh release create hub-latest out/hub.apk out/hub.json \
+            --title "Craft Hub (build ${{ github.run_number }})" \
+            --notes "Instale este APK no Android e escolha quais apps Craft baixar." \
+            --latest

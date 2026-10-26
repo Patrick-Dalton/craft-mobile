@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Craft Hub</title>
+<meta name="description" content="Apps Craft nativos para Android: instale o Craft Hub e escolha quais baixar.">
+<style>
+  :root {
+    --bg: #f6f7fb; --card: #ffffff; --text: #16181d; --muted: #5b6170; --accent: #2f5bea; --accent-text: #ffffff; --line: #e3e6ee;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111318; --card: #1b1e25; --text: #eef0f5; --muted: #a2a8b6; --accent: #8fa8ff; --accent-text: #0d1330; --line: #2a2e38; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 48px; }
+  .logo { width: 64px; height: 64px; border-radius: 16px; background: var(--accent); display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 15px; }
+  .logo span { background: var(--accent-text); border-radius: 3px; }
+  .logo span:last-child { opacity: .55; }
+  h1 { font-size: 2rem; margin: 16px 0 4px; }
+  .lead { color: var(--muted); margin: 0 0 24px; }
+  .download { display: inline-block; background: var(--accent); color: var(--accent-text); text-decoration: none; font-weight: 600; padding: 14px 22px; border-radius: 12px; }
+  .meta { color: var(--muted); font-size: .9rem; margin-top: 8px; }
+  ol { padding-left: 1.2em; }
+  h2 { font-size: 1.2rem; margin: 32px 0 12px; }
+  .apps { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .app { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: flex; gap: 12px; align-items: center; }
+  .app img { width: 44px; height: 44px; border-radius: 10px; }
+  .app b { display: block; }
+  .tag { font-size: .8rem; color: var(--muted); }
+  .tag.ok { color: var(--accent); font-weight: 600; }
+  footer { margin-top: 40px; color: var(--muted); font-size: .85rem; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <div class="logo" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <h1>Craft Hub</h1>
+  <p class="lead">Os apps Craft rodando nativos no Android. Instale o hub e escolha quais apps baixar.</p>
+
+  <a class="download" href="https://github.com/Patrick-Dalton/craft-mobile/releases/download/hub-latest/hub.apk">Baixar o Craft Hub (APK)</a>
+  <p class="meta" id="hub-meta">Android 8 ou mais novo, processador ARM 64 bits.</p>
+
+  <h2>Como instalar</h2>
+  <ol>
+    <li>Abra esta página no celular e toque em <b>Baixar o Craft Hub</b>.</li>
+    <li>Abra o arquivo baixado. Se o Android pedir, permita que o navegador instale apps.</li>
+    <li>No Craft Hub, toque em <b>Baixar</b> no app que quiser. Na primeira vez, permita que o hub instale apps.</li>
+  </ol>
+
+  <h2>Apps</h2>
+  <div class="apps" id="apps"></div>
+
+  <footer>
+    Versões para Android dos apps do <a href="https://github.com/storytold">ArtCraft (storytold)</a>, de código aberto (Apache-2.0), compiladas a partir do código original.
+    Código desta adaptação: <a href="https://github.com/Patrick-Dalton/craft-mobile">Patrick-Dalton/craft-mobile</a>.
+  </footer>
+</main>
+<script>
+  const repo = "Patrick-Dalton/craft-mobile";
+  const list = document.getElementById("apps");
+  fetch(`https://raw.githubusercontent.com/${repo}/main/catalog.json`)
+    .then(r => r.json())
+    .then(({ apps }) => {
+      for (const app of apps) {
+        const el = document.createElement("div");
+        el.className = "app";
+        const icon = `https://raw.githubusercontent.com/storytold/${app.id}/main/assets/app-icon/hicolor/128x128/apps/ai.storyteller.${app.id}.png`;
+        el.innerHTML = `<img alt="" src="${icon}"><div><b></b><span class="tag"></span></div>`;
+        el.querySelector("b").textContent = app.name;
+        const tag = el.querySelector(".tag");
+        tag.textContent = app.available ? "Disponível" : `Em breve · alternativa ao ${app.inspired}`;
+        if (app.available) tag.classList.add("ok");
+        list.appendChild(el);
+      }
+    })
+    .catch(() => { list.textContent = "Não foi possível carregar a lista agora."; });
+</script>
+</body>
+</html>

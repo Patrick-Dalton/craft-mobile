@@ -1,0 +1,11 @@
+.gradle/
+build/
+local.properties
+*.keystore
+*.jks
+*.p12
+apps/*/android/app/src/main/jniLibs/
+apps/*/android/app/src/main/res/mipmap-*/
+hub/app/src/main/assets/catalog.json
+/upstream/
+/out/

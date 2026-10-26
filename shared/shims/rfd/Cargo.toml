@@ -1,0 +1,23 @@
+[package]
+# Stands in for rfd on Android (patched in by the Android build only): the same API, with the
+# pickers shown by the activity through the Storage Access Framework.
+name = "rfd"
+version = "0.17.99"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[features]
+default = []
+# The real crate's features, so manifests that name them still resolve.
+file-handle-inner = []
+gtk3 = []
+xdg-portal = []
+tokio = []
+async-std = []
+common-controls-v6 = []
+wayland = []
+
+[target.'cfg(target_os = "android")'.dependencies]
+jni = "0.21"
+ndk-context = "0.1"

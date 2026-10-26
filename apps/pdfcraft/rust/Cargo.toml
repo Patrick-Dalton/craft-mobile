@@ -1,0 +1,22 @@
+[package]
+name = "pdfcraft-android"
+description = "PdfCraft on Android: the egui app in a NativeActivity"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+# No `[lints] workspace = true`: talking to Java needs `unsafe` (JNI), which the workspace forbids.
+
+[lib]
+crate-type = ["cdylib"]
+path = "src/lib.rs"
+
+[target.'cfg(target_os = "android")'.dependencies]
+pdfcraft-ui-egui = { workspace = true }
+eframe = { workspace = true, features = ["default_fonts", "glow", "persistence", "android-native-activity"] }
+egui = { workspace = true, features = ["default_fonts", "monochrome_emoji_fonts"] }
+log = { workspace = true }
+android_logger = "0.15"
+jni = "0.21"
+ndk-context = "0.1"

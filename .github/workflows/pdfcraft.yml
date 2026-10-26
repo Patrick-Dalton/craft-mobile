@@ -1,0 +1,123 @@
+name: PdfCraft for Android
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/pdfcraft/**"
+      - "shared/**"
+      - ".github/workflows/pdfcraft.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pdfcraft-android
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read the upstream pin
+        run: cat apps/pdfcraft/upstream.env >> "$GITHUB_ENV"
+
+      - name: Check out PdfCraft
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.UPSTREAM_REPO }}
+          ref: ${{ env.UPSTREAM_REF }}
+          path: upstream
+
+      - name: Add the Android app and shims
+        run: |
+          cp -r apps/pdfcraft/rust upstream/apps/pdfcraft-android
+          # rfd and arboard have no Android backends: patch in the shims (Android build only).
+          sed -i '/^\[patch\.crates-io\]/a rfd = { path = "../shared/shims/rfd" }\narboard = { path = "../shared/shims/arboard" }' upstream/Cargo.toml
+          grep -n -A3 '^\[patch\.crates-io\]' upstream/Cargo.toml
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: upstream
+          key: pdfcraft-android
+
+      - name: Install cargo-ndk
+        run: cargo install cargo-ndk --locked
+
+      - name: Build the native library
+        working-directory: upstream
+        env:
+          ANDROID_NDK_HOME: ${{ env.ANDROID_NDK_LATEST_HOME }}
+        run: |
+          cargo ndk -t arm64-v8a -P 26 \
+            -o "$GITHUB_WORKSPACE/apps/pdfcraft/android/app/src/main/jniLibs" \
+            build --release -p pdfcraft-android
+          ls -la "$GITHUB_WORKSPACE/apps/pdfcraft/android/app/src/main/jniLibs/arm64-v8a"
+
+      - name: App icon
+        run: |
+          res=apps/pdfcraft/android/app/src/main/res
+          for pair in mdpi:48 hdpi:64 xhdpi:128 xxhdpi:128 xxxhdpi:256; do
+            dir="$res/mipmap-${pair%%:*}"; mkdir -p "$dir"
+            cp "upstream/assets/app-icon/hicolor/${pair##*:}x${pair##*:}/apps/ai.storyteller.pdfcraft.png" "$dir/ic_launcher.png"
+          done
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.11.1"
+
+      - name: Signing key
+        env:
+          KEYSTORE_B64: ${{ secrets.CRAFT_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/craft.keystore"
+            echo "CRAFT_KEYSTORE=$RUNNER_TEMP/craft.keystore" >> "$GITHUB_ENV"
+          else
+            echo "::warning::No CRAFT_KEYSTORE_B64 secret: signing with a throwaway debug key."
+          fi
+
+      - name: Build the APK
+        working-directory: apps/pdfcraft/android
+        env:
+          CRAFT_KEYSTORE_PASSWORD: ${{ secrets.CRAFT_KEYSTORE_PASSWORD }}
+          CRAFT_KEY_ALIAS: ${{ secrets.CRAFT_KEY_ALIAS }}
+          CRAFT_KEY_PASSWORD: ${{ secrets.CRAFT_KEY_PASSWORD }}
+        run: |
+          gradle --no-daemon assembleRelease \
+            -PcraftVersionName="$APP_VERSION" -PcraftVersionCode="${{ github.run_number }}"
+          mkdir -p "$GITHUB_WORKSPACE/out"
+          cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/out/pdfcraft.apk"
+          size=$(stat -c %s "$GITHUB_WORKSPACE/out/pdfcraft.apk")
+          cat > "$GITHUB_WORKSPACE/out/pdfcraft.json" <<EOF
+          {"id":"pdfcraft","versionName":"$APP_VERSION","versionCode":${{ github.run_number }},"size":$size,"upstream":"$UPSTREAM_REPO@$UPSTREAM_REF"}
+          EOF
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pdfcraft-apk
+          path: out/
+
+      - name: Publish (pdfcraft-latest)
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete pdfcraft-latest --cleanup-tag --yes || true
+          gh release create pdfcraft-latest out/pdfcraft.apk out/pdfcraft.json \
+            --title "PdfCraft $APP_VERSION para Android (build ${{ github.run_number }})" \
+            --notes "PdfCraft $APP_VERSION ($UPSTREAM_REPO@$UPSTREAM_REF) compilado para Android arm64." \
+            --latest=false
