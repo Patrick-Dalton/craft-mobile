@@ -65,6 +65,8 @@ jobs:
           cargo ndk -t arm64-v8a -P 26 \
             -o "$GITHUB_WORKSPACE/apps/pdfcraft/android/app/src/main/jniLibs" \
             build --release --keep-going -p pdfcraft-android 2>&1 | tee "$GITHUB_WORKSPACE/build.log"
+          # cargo-ndk also copies dependencies' own .so files; the app doesn't load them.
+          find "$GITHUB_WORKSPACE/apps/pdfcraft/android/app/src/main/jniLibs" -name '*.so' ! -name 'libpdfcraft_android.so' -delete
           ls -la "$GITHUB_WORKSPACE/apps/pdfcraft/android/app/src/main/jniLibs/arm64-v8a"
 
       - name: App icon

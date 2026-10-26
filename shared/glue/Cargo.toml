@@ -1,0 +1,15 @@
+[package]
+# Runs a Craft app's unchanged desktop `main()` inside an Android GameActivity.
+name = "craft-android-glue"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[target.'cfg(target_os = "android")'.dependencies]
+# The workspaces patch eframe and winit to storytold's forks; the CI pins these requirements to
+# the versions in each app's Cargo.lock, so there is one eframe and one winit in the build.
+eframe = { version = "0.37", default-features = false, features = ["android-game-activity"] }
+winit = { version = "0.30", default-features = false, features = ["android-game-activity"] }
+android_logger = "0.15"
+log = "0.4"

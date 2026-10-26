@@ -1,0 +1,155 @@
+name: Craft apps for Android
+
+# Every Craft app except PdfCraft (which has its own shell in apps/pdfcraft): the desktop crate,
+# turned into an Android library by shared/scripts/androidify.py, in the shared Android project.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "shared/**"
+      - ".github/workflows/apps.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    name: ${{ matrix.label }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { id: photocraft, label: PhotoCraft, tag: v0.16.0 }
+          - { id: lightcraft, label: LightCraft, tag: v0.14.0 }
+          - { id: filmcraft, label: FilmCraft, tag: v0.13.0 }
+          - { id: vectorcraft, label: VectorCraft, tag: v0.17.0 }
+          - { id: effectcraft, label: EffectCraft, tag: v0.17.0 }
+          - { id: designcraft, label: DesignCraft, tag: v0.13.0 }
+          - { id: figcraft, label: FigCraft, tag: v0.11.2 }
+          - { id: wordcraft, label: WordCraft, tag: v0.11.0 }
+          - { id: gridcraft, label: GridCraft, tag: v0.12.1 }
+          - { id: deckcraft, label: DeckCraft, tag: v0.11.1 }
+          - { id: soundcraft, label: SoundCraft, tag: v0.13.1 }
+          - { id: cadcraft, label: CADCraft, tag: v0.13.0 }
+    env:
+      APP: ${{ matrix.id }}
+      LABEL: ${{ matrix.label }}
+      UPSTREAM_REPO: storytold/${{ matrix.id }}
+      UPSTREAM_REF: ${{ matrix.tag }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out ${{ matrix.label }}
+        uses: actions/checkout@v4
+        with:
+          repository: storytold/${{ matrix.id }}
+          ref: ${{ matrix.tag }}
+          path: upstream
+
+      - name: Make it an Android library
+        run: |
+          echo "APP_VERSION=${UPSTREAM_REF#v}" >> "$GITHUB_ENV"
+          python3 shared/scripts/androidify.py upstream "$APP"
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: upstream
+          key: ${{ matrix.id }}-android
+          cache-on-failure: true
+
+      - name: Install cargo-ndk
+        run: cargo install cargo-ndk --locked
+
+      - name: Build the native library
+        working-directory: upstream
+        run: |
+          # The runner image sets ANDROID_NDK_LATEST_HOME in the shell, not in the `env` context.
+          export ANDROID_NDK_HOME="$ANDROID_NDK_LATEST_HOME"
+          export CARGO_TERM_COLOR=never
+          set -o pipefail
+          libs="$GITHUB_WORKSPACE/shared/android-app/app/src/main/jniLibs"
+          cargo ndk -t arm64-v8a -P 26 -o "$libs" \
+            build --release --keep-going -p "$APP" --lib 2>&1 | tee "$GITHUB_WORKSPACE/build.log"
+          # cargo-ndk also copies dependencies' own .so files; the app doesn't load them.
+          find "$libs" -name '*.so' ! -name 'libcraft_app.so' -delete
+          ls -la "$libs/arm64-v8a"
+
+      - name: App icon
+        run: |
+          res=shared/android-app/app/src/main/res
+          for pair in mdpi:48 hdpi:64 xhdpi:128 xxhdpi:128 xxxhdpi:256; do
+            dir="$res/mipmap-${pair%%:*}"; mkdir -p "$dir"
+            cp "upstream/assets/app-icon/hicolor/${pair##*:}x${pair##*:}/apps/ai.storyteller.$APP.png" "$dir/ic_launcher.png"
+          done
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.11.1"
+
+      - name: Signing key
+        env:
+          KEYSTORE_B64: ${{ secrets.CRAFT_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/craft.keystore"
+            echo "CRAFT_KEYSTORE=$RUNNER_TEMP/craft.keystore" >> "$GITHUB_ENV"
+          else
+            echo "::warning::No CRAFT_KEYSTORE_B64 secret: signing with a throwaway debug key."
+          fi
+
+      - name: Build the APK
+        working-directory: shared/android-app
+        env:
+          CRAFT_KEYSTORE_PASSWORD: ${{ secrets.CRAFT_KEYSTORE_PASSWORD }}
+          CRAFT_KEY_ALIAS: ${{ secrets.CRAFT_KEY_ALIAS }}
+          CRAFT_KEY_PASSWORD: ${{ secrets.CRAFT_KEY_PASSWORD }}
+        run: |
+          set -o pipefail
+          gradle --no-daemon --console=plain assembleRelease \
+            -PcraftAppId="$APP" -PcraftLabel="$LABEL" \
+            -PcraftVersionName="$APP_VERSION" -PcraftVersionCode="${{ github.run_number }}" 2>&1 | tee "$GITHUB_WORKSPACE/gradle.log"
+          mkdir -p "$GITHUB_WORKSPACE/out"
+          cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/out/$APP.apk"
+          size=$(stat -c %s "$GITHUB_WORKSPACE/out/$APP.apk")
+          echo "{\"id\":\"$APP\",\"versionName\":\"$APP_VERSION\",\"versionCode\":${{ github.run_number }},\"size\":$size,\"upstream\":\"$UPSTREAM_REPO@$UPSTREAM_REF\",\"commit\":\"${{ github.sha }}\"}" > "$GITHUB_WORKSPACE/out/$APP.json"
+
+      # Job logs need a signed-in admin to read: push the errors to a branch per app instead,
+      # which raw.githubusercontent.com serves to anyone.
+      - name: Publish the build errors
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          touch build.log gradle.log
+          { echo "sha ${{ github.sha }} run ${{ github.run_id }}"; grep -n -E '^error|^warning: unused|-->' build.log | head -n 1500 || true; echo '--- tail ---'; tail -n 200 build.log; echo '--- gradle ---'; grep -n -E 'What went wrong|error:|e: ' gradle.log | head -n 100 || true; tail -n 80 gradle.log; } > errors.txt
+          logs="$RUNNER_TEMP/buildlogs"
+          mkdir -p "$logs/$APP" && cp errors.txt build.log gradle.log "$logs/$APP/"
+          cd "$logs"
+          git init -q -b "buildlogs-$APP"
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com add -A
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -qm "$LABEL: log da falha em ${{ github.sha }}"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" "HEAD:refs/heads/buildlogs-$APP"
+
+      - name: Publish (${{ matrix.id }}-latest)
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete "$APP-latest" --cleanup-tag --yes || true
+          gh release create "$APP-latest" "out/$APP.apk" "out/$APP.json" \
+            --title "$LABEL $APP_VERSION para Android (build ${{ github.run_number }})" \
+            --notes "$LABEL $APP_VERSION ($UPSTREAM_REPO@$UPSTREAM_REF) compilado para Android arm64." \
+            --latest=false

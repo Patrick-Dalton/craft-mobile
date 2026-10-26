@@ -9,3 +9,5 @@ apps/*/android/app/src/main/res/mipmap-*/
 hub/app/src/main/assets/catalog.json
 /upstream/
 /out/
+shared/android-app/app/src/main/jniLibs/
+shared/android-app/app/src/main/res/
