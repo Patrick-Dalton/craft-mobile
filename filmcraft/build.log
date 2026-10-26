@@ -1,0 +1,640 @@
+warning: Environment variable `ANDROID_NDK_HOME = "/usr/local/lib/android/sdk/ndk/30.0.16248370"` doesn't match `ANDROID_NDK_ROOT = "/usr/local/lib/android/sdk/ndk/27.3.13750724"`
+    Building arm64-v8a (aarch64-linux-android)
+    Updating crates.io index
+    Updating git repository `https://github.com/storytold/craft-libs`
+     Locking 9 packages to highest Rust 1.95 compatible versions
+      Adding aho-corasick v1.1.5
+      Adding android_log-sys v0.3.2
+      Adding android_logger v0.15.1
+      Adding arboard v3.99.0 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/arboard)
+      Adding craft-android-glue v0.1.0 (/home/runner/work/craft-mobile/craft-mobile/shared/glue)
+      Adding env_filter v0.1.4
+      Adding regex v1.13.1
+      Adding regex-automata v0.4.18
+      Adding rfd v0.17.99 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/rfd)
+ Downloading crates ...
+  Downloaded accesskit_atspi_common v0.18.1
+  Downloaded accesskit v0.24.1
+  Downloaded async-broadcast v0.7.2
+  Downloaded async-task v4.7.1
+  Downloaded async-executor v1.14.0
+  Downloaded aho-corasick v1.1.5
+  Downloaded atspi-common v0.13.0
+  Downloaded accesskit_winit v0.32.2
+  Downloaded accesskit_unix v0.21.1
+  Downloaded calloop-wayland-source v0.4.1
+  Downloaded dasp_sample v0.11.0
+  Downloaded egui-winit v0.36.2
+  Downloaded chrono v0.4.45
+  Downloaded cpufeatures v0.2.17
+  Downloaded serde_spanned v1.1.1
+  Downloaded env_filter v0.1.4
+  Downloaded ahash v0.8.12
+  Downloaded byteorder-lite v0.1.0
+  Downloaded scoped-tls v1.0.1
+  Downloaded symphonia-utils-xiph v0.5.5
+  Downloaded cc v1.5.1
+  Downloaded cursor-icon v1.2.0
+  Downloaded flate2 v1.1.10
+  Downloaded rustc_version v0.4.1
+  Downloaded wayland-protocols-misc v0.3.12
+  Downloaded symphonia-codec-alac v0.5.5
+  Downloaded sys-locale v0.3.2
+  Downloaded toml_datetime v1.1.1+spec-1.1.0
+  Downloaded android-activity v0.6.1
+  Downloaded smithay-clipboard v0.7.3
+  Downloaded static_assertions v1.1.0
+  Downloaded toml_writer v1.1.2+spec-1.1.0
+  Downloaded rustversion v1.0.23
+  Downloaded signal-hook-registry v1.4.8
+  Downloaded emath v0.36.2
+  Downloaded semver v1.0.28
+  Downloaded smallvec v1.16.2
+  Downloaded thiserror-impl v2.0.21
+  Downloaded unicode-ident v1.0.26
+  Downloaded web-time v1.1.0
+  Downloaded cfg-if v1.0.5
+  Downloaded color_quant v1.1.0
+  Downloaded unicode-bidi v0.3.18
+  Downloaded as-raw-xcb-connection v1.0.1
+  Downloaded core_detect v1.0.0
+  Downloaded epaint_default_fonts v0.36.2
+  Downloaded serde_derive v1.0.229
+  Downloaded tracing-core v0.1.36
+  Downloaded font-types v0.12.5
+  Downloaded wayland-cursor v0.31.14
+  Downloaded atomic-waker v1.1.2
+  Downloaded atspi v0.29.0
+  Downloaded symphonia-format-riff v0.5.5
+  Downloaded bitflags v1.3.2
+  Downloaded wayland-backend v0.3.17
+  Downloaded symphonia-core v0.5.5
+  Downloaded unicode-segmentation v1.13.3
+  Downloaded wayland-scanner v0.31.11
+  Downloaded alsa v0.9.1
+  Downloaded memmap2 v0.9.11
+  Downloaded bytemuck_derive v1.12.1
+  Downloaded eframe v0.36.2
+  Downloaded fearless_simd v0.4.1
+  Downloaded roxmltree v0.21.1
+  Downloaded android-properties v0.2.2
+  Downloaded xkbcommon-dl v0.4.2
+  Downloaded bit-set v0.10.0
+  Downloaded digest v0.10.7
+  Downloaded open v5.4.4
+  Downloaded android_system_properties v0.1.6
+  Downloaded errno v0.3.14
+  Downloaded extended v0.1.0
+  Downloaded calloop v0.14.4
+  Downloaded async-recursion v1.1.1
+  Downloaded quick-error v2.0.1
+  Downloaded android_log-sys v0.3.2
+  Downloaded color v0.3.3
+  Downloaded percent-encoding v2.3.2
+  Downloaded skrifa v0.44.0
+  Downloaded pkg-config v0.3.34
+  Downloaded simd_cesu8 v1.2.0
+  Downloaded zbus-lockstep v0.5.2
+  Downloaded atspi-proxies v0.13.0
+  Downloaded wgpu-core v30.0.1
+  Downloaded x11rb v0.13.2
+  Downloaded image v0.25.10
+  Downloaded jni v0.21.1
+  Downloaded async-signal v0.2.14
+  Downloaded wgpu-hal v30.0.1
+  Downloaded quick-xml v0.41.0
+  Downloaded crypto-common v0.1.7
+  Downloaded regex-automata v0.4.18
+  Downloaded vello_common v0.1.0
+  Downloaded winit v0.30.13
+  Downloaded enumflags2_derive v0.7.12
+  Downloaded xkeysym v0.2.1
+  Downloaded guillotiere v0.7.0
+  Downloaded is-docker v0.2.0
+  Downloaded moxcms v0.8.1
+  Downloaded futures-lite v2.6.1
+  Downloaded zbus_xml v5.2.1
+  Downloaded async-io v2.6.0
+  Downloaded calloop v0.13.0
+  Downloaded egui-wgpu v0.36.2
+  Downloaded nohash-hasher v0.2.0
+  Downloaded num_enum_derive v0.7.6
+  Downloaded bitflags v2.13.2
+  Downloaded codespan-reporting v0.13.1
+  Downloaded endi v1.1.1
+  Downloaded glutin_glx_sys v0.6.1
+  Downloaded block-buffer v0.10.4
+  Downloaded lazy_static v1.5.0
+  Downloaded blocking v1.7.0
+  Downloaded cesu8 v1.1.0
+  Downloaded downcast-rs v1.2.1
+  Downloaded find-msvc-tools v0.1.14
+  Downloaded futures-io v0.3.34
+  Downloaded glutin v0.32.3
+  Downloaded jni-macros v0.22.4
+  Downloaded lock_api v0.4.14
+  Downloaded raw-window-handle v0.6.2
+  Downloaded zune-core v0.5.3
+  Downloaded arrayvec v0.7.8
+  Downloaded async-channel v2.5.0
+  Downloaded async-process v2.5.0
+  Downloaded bit-vec v0.9.1
+  Downloaded bytemuck v1.25.2
+  Downloaded crossbeam-epoch v0.9.21
+  Downloaded event-listener-strategy v0.5.4
+  Downloaded allocator-api2 v0.2.21
+  Downloaded cpal v0.16.0
+  Downloaded epaint v0.36.2
+  Downloaded hashbrown v0.16.1
+  Downloaded gl_generator v0.14.0
+  Downloaded either v1.18.0
+  Downloaded event-listener v5.4.2
+  Downloaded rayon v1.12.0
+  Downloaded enumflags2 v0.7.12
+  Downloaded miniz_oxide v0.9.1
+  Downloaded parking_lot v0.12.5
+  Downloaded rayon-core v1.13.0
+  Downloaded combine v4.6.8
+  Downloaded glow v0.17.0
+  Downloaded zbus v5.19.0
+  Downloaded adler2 v2.0.1
+  Downloaded crc32fast v1.5.2
+  Downloaded document-features v0.2.12
+  Downloaded ash v0.38.0+1.3.281
+  Downloaded dlib v0.5.3
+  Downloaded futures-util v0.3.34
+  Downloaded futures-core v0.3.34
+  Downloaded crossbeam-utils v0.8.23
+  Downloaded futures-macro v0.3.34
+  Downloaded is-wsl v0.4.0
+  Downloaded quote v1.0.47
+  Downloaded zune-jpeg v0.5.15
+  Downloaded accesskit_consumer v0.36.0
+  Downloaded ecolor v0.36.2
+  Downloaded futures-task v0.3.34
+  Downloaded jni-sys-macros v0.4.1
+  Downloaded khronos-egl v6.0.0
+  Downloaded egui v0.36.2
+  Downloaded encoding_rs v0.8.42
+  Downloaded fdeflate v0.3.7
+  Downloaded hex v0.4.3
+  Downloaded jni v0.22.4
+  Downloaded phf_macros v0.13.1
+  Downloaded pin-project-lite v0.2.17
+  Downloaded unicode-linebreak v0.1.5
+  Downloaded proc-macro2 v1.0.107
+  Downloaded jni-sys v0.3.1
+  Downloaded generic-array v0.14.7
+  Downloaded subtle v2.6.1
+  Downloaded symphonia-metadata v0.5.5
+  Downloaded libc v0.2.189
+  Downloaded peniko v0.6.1
+  Downloaded image-webp v0.2.4
+  Downloaded regex-syntax v0.8.11
+  Downloaded simd-adler32 v0.3.10
+  Downloaded weezl v0.1.12
+  Downloaded tracing-attributes v0.1.31
+  Downloaded indexmap v2.14.2
+  Downloaded phf v0.13.1
+  Downloaded harfrust v0.12.0
+  Downloaded num_enum v0.7.6
+  Downloaded itertools v0.15.0
+  Downloaded miniz_oxide v0.8.9
+  Downloaded rustc-hash v1.1.0
+  Downloaded vello_cpu v0.1.0
+  Downloaded cfg_aliases v0.2.2
+  Downloaded getrandom v0.3.4
+  Downloaded android_logger v0.15.1
+  Downloaded bytes v1.12.1
+  Downloaded khronos_api v3.1.0
+  Downloaded serde v1.0.229
+  Downloaded parking_lot_core v0.9.12
+  Downloaded rustix v0.38.44
+  Downloaded calloop-wayland-source v0.3.0
+  Downloaded memchr v2.8.3
+  Downloaded proc-macro-crate v3.5.0
+  Downloaded async-lock v3.4.2
+  Downloaded getrandom v0.4.3
+  Downloaded hashbrown v0.17.1
+  Downloaded alsa-sys v0.3.1
+  Downloaded ndk-sys v0.6.0+11769913
+  Downloaded dpi v0.1.2
+  Downloaded xcursor v0.3.11
+  Downloaded zlib-rs v0.6.8
+  Downloaded phf_shared v0.13.1
+  Downloaded zbus-lockstep-macros v0.5.2
+  Downloaded async-trait v0.1.92
+  Downloaded concurrent-queue v2.5.0
+  Downloaded crossbeam-deque v0.8.8
+  Downloaded presser v0.3.1
+  Downloaded autocfg v1.5.1
+  Downloaded euclid v0.22.14
+  Downloaded fastrand v2.5.0
+  Downloaded fax v0.2.7
+  Downloaded symphonia-bundle-flac v0.5.5
+  Downloaded egui_glow v0.36.2
+  Downloaded pollster v1.0.1
+  Downloaded read-fonts v0.41.0
+  Downloaded zerocopy-derive v0.8.59
+  Downloaded symphonia-format-ogg v0.5.5
+  Downloaded naga v30.0.1
+  Downloaded profiling v1.0.18
+  Downloaded foldhash v0.2.0
+  Downloaded linux-raw-sys v0.12.1
+  Downloaded glutin_egl_sys v0.7.1
+  Downloaded glifo v0.2.0
+  Downloaded parking v2.2.1
+  Downloaded png v0.18.1
+  Downloaded wgpu-naga-bridge v30.0.1
+  Downloaded half v2.7.1
+  Downloaded same-file v1.0.6
+  Downloaded zvariant_utils v4.2.0
+  Downloaded thiserror v2.0.21
+  Downloaded regex v1.13.1
+  Downloaded tiff v0.11.3
+  Downloaded toml v1.1.6+spec-1.1.0
+  Downloaded symphonia-bundle-mp3 v0.5.5
+  Downloaded zvariant_derive v5.15.0
+  Downloaded linebender_resource_handle v0.1.1
+  Downloaded ndk-context v0.1.1
+  Downloaded syn v3.0.6
+  Downloaded winnow v1.0.4
+  Downloaded naga-types v30.0.1
+  Downloaded typenum v1.20.1
+  Downloaded toml_parser v1.1.3+spec-1.1.0
+  Downloaded libloading v0.8.9
+  Downloaded wayland-csd-frame v0.3.0
+  Downloaded ordered-float v5.5.0
+  Downloaded glutin-winit v0.5.0
+  Downloaded renderdoc-sys v1.1.0
+  Downloaded smol_str v0.2.2
+  Downloaded symphonia-codec-aac v0.5.5
+  Downloaded serde_json v1.0.151
+  Downloaded tempfile v3.27.0
+  Downloaded wayland-protocols-wlr v0.3.12
+  Downloaded siphasher v1.0.4
+  Downloaded zcheapstr v1.1.0
+  Downloaded linux-raw-sys v0.4.15
+  Downloaded jni-sys v0.4.1
+  Downloaded polycool v0.4.0
+  Downloaded wayland-protocols-plasma v0.3.12
+  Downloaded symphonia-codec-vorbis v0.5.5
+  Downloaded phf_generator v0.13.1
+  Downloaded num-derive v0.4.2
+  Downloaded symphonia v0.5.5
+  Downloaded type-map v0.5.1
+  Downloaded zbus_macros v5.19.0
+  Downloaded wayland-protocols-experimental v20250721.0.1
+  Downloaded gif v0.14.2
+  Downloaded iana-time-zone v0.1.65
+  Downloaded multiversion_no_op v1.0.0
+  Downloaded scopeguard v1.2.0
+  Downloaded self_cell v1.3.0
+  Downloaded wgpu v30.0.1
+  Downloaded pollster v0.4.0
+  Downloaded shlex v2.0.1
+  Downloaded unicode-general-category v1.1.0
+  Downloaded piper v0.2.5
+  Downloaded ordered-stream v0.2.0
+  Downloaded sha2 v0.10.9
+  Downloaded ndk v0.9.0
+  Downloaded polling v3.11.0
+  Downloaded unicode-width v0.2.2
+  Downloaded wayland-client v0.31.15
+  Downloaded zvariant v5.15.0
+  Downloaded serde_repr v0.1.21
+  Downloaded simdutf8 v0.1.5
+  Downloaded smithay-client-toolkit v0.19.2
+  Downloaded toml_edit v0.25.15+spec-1.1.0
+  Downloaded xml-rs v0.8.29
+  Downloaded zmij v1.0.23
+  Downloaded kurbo v0.13.1
+  Downloaded zerocopy v0.8.59
+  Downloaded rustix v1.1.5
+  Downloaded itoa v1.0.18
+  Downloaded walkdir v2.5.0
+  Downloaded jobserver v0.1.35
+  Downloaded litrs v1.0.0
+  Downloaded serde_core v1.0.229
+  Downloaded syn v2.0.119
+  Downloaded uuid v1.26.1
+  Downloaded wgpu-core-deps-windows-linux-android v30.0.1
+  Downloaded libm v0.2.16
+  Downloaded x11rb-protocol v0.13.2
+  Downloaded pxfm v0.1.30
+  Downloaded symphonia-format-isomp4 v0.5.5
+  Downloaded log v0.4.34
+  Downloaded rustc-hash v2.1.3
+  Downloaded spirv v0.4.0+sdk-1.4.341.0
+  Downloaded symphonia-codec-pcm v0.5.5
+  Downloaded wayland-sys v0.31.11
+  Downloaded wgpu-types v30.0.1
+  Downloaded tracing v0.1.44
+  Downloaded smithay-client-toolkit v0.20.0
+  Downloaded wayland-protocols v0.32.13
+  Downloaded x11-dl v2.21.0
+  Downloaded slab v0.4.12
+  Downloaded once_cell v1.21.4
+  Downloaded zbus_names v4.3.4
+  Downloaded gpu-allocator v0.28.0
+  Downloaded gethostname v1.1.0
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling cfg-if v1.0.5
+   Compiling thiserror v2.0.21
+   Compiling log v0.4.34
+   Compiling libc v0.2.189
+   Compiling libm v0.2.16
+   Compiling autocfg v1.5.1
+   Compiling bitflags v2.13.2
+   Compiling num-traits v0.2.19
+   Compiling syn v3.0.6
+   Compiling syn v2.0.119
+   Compiling arrayvec v0.7.8
+   Compiling either v1.18.0
+   Compiling zerocopy v0.8.59
+   Compiling memchr v2.8.3
+   Compiling crossbeam-utils v0.8.23
+   Compiling once_cell v1.21.4
+   Compiling crossbeam-epoch v0.9.21
+   Compiling thiserror-impl v2.0.21
+   Compiling bytemuck_derive v1.12.1
+   Compiling crossbeam-deque v0.8.8
+   Compiling rayon-core v1.13.0
+   Compiling bytemuck v1.25.2
+   Compiling scopeguard v1.2.0
+   Compiling rustversion v1.0.23
+   Compiling smallvec v1.16.2
+   Compiling serde_core v1.0.229
+   Compiling cfg_aliases v0.2.2
+   Compiling serde v1.0.229
+   Compiling rayon v1.12.0
+   Compiling zerocopy-derive v0.8.59
+   Compiling serde_derive v1.0.229
+   Compiling simdutf8 v0.1.5
+   Compiling simd-adler32 v0.3.10
+   Compiling jni-sys-macros v0.4.1
+   Compiling foldhash v0.2.0
+   Compiling crc32fast v1.5.2
+   Compiling adler2 v2.0.1
+   Compiling jni-sys v0.4.1
+   Compiling jni-sys v0.3.1
+   Compiling miniz_oxide v0.9.1
+   Compiling version_check v0.9.5
+   Compiling zmij v1.0.23
+   Compiling flate2 v1.1.10
+   Compiling hashbrown v0.17.1
+   Compiling craft-media v0.1.0 (https://github.com/storytold/craft-libs?rev=f0ad6c1e1d297908915f4be315b0fcfc9be7b5d4#f0ad6c1e)
+   Compiling weezl v0.1.12
+   Compiling quick-error v2.0.1
+   Compiling zune-core v0.5.3
+   Compiling miniz_oxide v0.8.9
+   Compiling zune-jpeg v0.5.15
+   Compiling half v2.7.1
+   Compiling fdeflate v0.3.7
+   Compiling font-types v0.12.5
+   Compiling byteorder-lite v0.1.0
+   Compiling fax v0.2.7
+   Compiling pxfm v0.1.30
+   Compiling serde_json v1.0.151
+   Compiling winnow v1.0.4
+   Compiling color_quant v1.1.0
+   Compiling gif v0.14.2
+   Compiling toml_parser v1.1.3+spec-1.1.0
+   Compiling tiff v0.11.3
+   Compiling image-webp v0.2.4
+   Compiling read-fonts v0.41.0
+   Compiling moxcms v0.8.1
+   Compiling png v0.18.1
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+   Compiling filmcraft-color v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/color)
+   Compiling android_system_properties v0.1.6
+   Compiling bitflags v1.3.2
+   Compiling raw-window-handle v0.6.2
+   Compiling lazy_static v1.5.0
+   Compiling symphonia-core v0.5.5
+   Compiling filmcraft-bitstream v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/bitstream)
+   Compiling parking_lot_core v0.9.12
+   Compiling equivalent v1.0.2
+   Compiling ndk-sys v0.6.0+11769913
+   Compiling filmcraft-time v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/time)
+   Compiling encoding_rs v0.8.42
+   Compiling unicode-segmentation v1.13.3
+   Compiling image v0.25.10
+   Compiling thiserror v1.0.69
+   Compiling indexmap v2.14.2
+   Compiling filmcraft-frame v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/frame)
+   Compiling skrifa v0.44.0
+   Compiling harfrust v0.12.0
+   Compiling filmcraft-dng v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/dng)
+   Compiling thiserror-impl v1.0.69
+   Compiling lock_api v0.4.14
+   Compiling libloading v0.8.9
+   Compiling bytes v1.12.1
+   Compiling multiversion_no_op v1.0.0
+   Compiling combine v4.6.8
+   Compiling parking_lot v0.12.5
+   Compiling filmcraft-media v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/media)
+   Compiling toml_edit v0.25.15+spec-1.1.0
+   Compiling semver v1.0.28
+   Compiling rustc-hash v1.1.0
+   Compiling profiling v1.0.18
+   Compiling itoa v1.0.18
+   Compiling rustc_version v0.4.1
+   Compiling naga-types v30.0.1
+   Compiling proc-macro-crate v3.5.0
+   Compiling symphonia-metadata v0.5.5
+   Compiling filmcraft-geom v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/geom)
+   Compiling naga v30.0.1
+   Compiling polycool v0.4.0
+   Compiling bit-vec v0.9.1
+   Compiling unicode-width v0.2.2
+   Compiling pkg-config v0.3.34
+   Compiling ash v0.38.0+1.3.281
+   Compiling same-file v1.0.6
+   Compiling walkdir v2.5.0
+   Compiling wayland-sys v0.31.11
+   Compiling codespan-reporting v0.13.1
+   Compiling bit-set v0.10.0
+   Compiling kurbo v0.13.1
+   Compiling filmcraft-project v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/project)
+   Compiling jobserver v0.1.35
+   Compiling num_enum_derive v0.7.6
+   Compiling jni-macros v0.22.4
+   Compiling color v0.3.3
+   Compiling euclid v0.22.14
+   Compiling spirv v0.4.0+sdk-1.4.341.0
+   Compiling allocator-api2 v0.2.21
+   Compiling ndk-context v0.1.1
+   Compiling khronos-egl v6.0.0
+   Compiling find-msvc-tools v0.1.14
+   Compiling static_assertions v1.1.0
+   Compiling shlex v2.0.1
+   Compiling linebender_resource_handle v0.1.1
+   Compiling cc v1.5.1
+   Compiling simd_cesu8 v1.2.0
+   Compiling peniko v0.6.1
+   Compiling wgpu-types v30.0.1
+   Compiling hashbrown v0.16.1
+   Compiling guillotiere v0.7.0
+   Compiling num_enum v0.7.6
+   Compiling jni v0.22.4
+   Compiling dlib v0.5.3
+   Compiling ahash v0.8.12
+   Compiling wgpu-hal v30.0.1
+   Compiling presser v0.3.1
+   Compiling unicode-general-category v1.1.0
+   Compiling fearless_simd v0.4.1
+   Compiling vello_common v0.1.0
+   Compiling wgpu-naga-bridge v30.0.1
+   Compiling ndk v0.9.0
+   Compiling gpu-allocator v0.28.0
+   Compiling android-activity v0.6.1
+   Compiling symphonia-utils-xiph v0.5.5
+   Compiling generic-array v0.14.7
+   Compiling emath v0.36.2
+   Compiling ordered-float v5.5.0
+   Compiling filmcraft-text v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/text)
+   Compiling web-time v1.1.0
+   Compiling renderdoc-sys v1.1.0
+   Compiling glow v0.17.0
+   Compiling uuid v1.26.1
+   Compiling accesskit v0.24.1
+   Compiling ecolor v0.36.2
+   Compiling vello_cpu v0.1.0
+   Compiling iana-time-zone v0.1.65
+   Compiling wgpu-core v30.0.1
+   Compiling winit v0.30.13
+   Compiling roxmltree v0.21.1
+   Compiling epaint_default_fonts v0.36.2
+   Compiling self_cell v1.3.0
+   Compiling nohash-hasher v0.2.0
+   Compiling tracing-core v0.1.36
+   Compiling unicode-bidi v0.3.18
+   Compiling litrs v1.0.0
+   Compiling typenum v1.20.1
+   Compiling pin-project-lite v0.2.17
+   Compiling unicode-linebreak v0.1.5
+   Compiling android-properties v0.2.2
+   Compiling tracing v0.1.44
+   Compiling document-features v0.2.12
+   Compiling epaint v0.36.2
+   Compiling chrono v0.4.45
+   Compiling wgpu-core-deps-windows-linux-android v30.0.1
+   Compiling wgpu v30.0.1
+   Compiling itertools v0.15.0
+   Compiling cursor-icon v1.2.0
+   Compiling dpi v0.1.2
+   Compiling smol_str v0.2.2
+   Compiling egui v0.36.2
+   Compiling filmcraft-captions v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/captions)
+   Compiling filmcraft-audio-dsp v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/audio-dsp)
+   Compiling rustix v1.1.5
+   Compiling getrandom v0.4.3
+   Compiling extended v0.1.0
+   Compiling symphonia-format-riff v0.5.5
+   Compiling filmcraft-render v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/render)
+   Compiling filmcraft-mxf v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/mxf)
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling symphonia-format-isomp4 v0.5.5
+   Compiling symphonia-format-ogg v0.5.5
+   Compiling symphonia-codec-vorbis v0.5.5
+   Compiling symphonia-bundle-flac v0.5.5
+   Compiling symphonia-bundle-mp3 v0.5.5
+   Compiling symphonia-codec-alac v0.5.5
+   Compiling symphonia-codec-aac v0.5.5
+   Compiling symphonia-codec-pcm v0.5.5
+   Compiling filmcraft-apv v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/apv)
+   Compiling filmcraft-dnx v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/dnx)
+   Compiling filmcraft-prores v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/prores)
+   Compiling filmcraft-aac v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/aac)
+   Compiling filmcraft-isobmff v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/isobmff)
+   Compiling aho-corasick v1.1.5
+   Compiling errno v0.3.14
+   Compiling rustc-hash v2.1.3
+   Compiling linux-raw-sys v0.12.1
+   Compiling regex-syntax v0.8.11
+   Compiling regex-automata v0.4.18
+   Compiling type-map v0.5.1
+   Compiling symphonia v0.5.5
+   Compiling digest v0.10.7
+   Compiling accesskit_winit v0.32.2
+   Compiling filmcraft-h264 v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/h264)
+   Compiling filmcraft-flac v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/flac)
+   Compiling filmcraft-hevc v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/hevc)
+   Compiling filmcraft-av1 v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/av1)
+   Compiling filmcraft-mpa v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/mpa)
+   Compiling filmcraft-vp9 v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/vp9)
+   Compiling filmcraft-h264enc v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/h264enc)
+   Compiling filmcraft-matroska v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/matroska)
+   Compiling serde_spanned v1.1.1
+   Compiling filmcraft-mpeg2v v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/mpeg2v)
+   Compiling filmcraft-mpegts v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/mpegts)
+   Compiling filmcraft-ac3 v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/ac3)
+   Compiling filmcraft-vp8 v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/vp8)
+   Compiling cpufeatures v0.2.17
+   Compiling filmcraft-ogg v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/ogg)
+   Compiling toml_writer v1.1.2+spec-1.1.0
+   Compiling fastrand v2.5.0
+   Compiling filmcraft-opus v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/opus)
+   Compiling cesu8 v1.1.0
+   Compiling filmcraft-avi v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/avi)
+   Compiling jni v0.21.1
+   Compiling filmcraft-codecs v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/codecs)
+   Compiling tempfile v3.27.0
+   Compiling toml v1.1.6+spec-1.1.0
+   Compiling sha2 v0.10.9
+   Compiling filmcraft-export v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/export)
+   Compiling egui-winit v0.36.2
+   Compiling regex v1.13.1
+   Compiling egui-wgpu v0.36.2
+   Compiling pollster v1.0.1
+   Compiling filmcraft-cfb v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/cfb)
+   Compiling filmcraft-interchange v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/interchange)
+   Compiling eframe v0.36.2
+   Compiling env_filter v0.1.4
+   Compiling filmcraft-ui-egui v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/ui-egui)
+   Compiling filmcraft-speech v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/speech)
+   Compiling filmcraft-format v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/format)
+   Compiling filmcraft-edit v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/edit)
+   Compiling filmcraft-scopes v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/scopes)
+   Compiling filmcraft-tts v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/tts)
+   Compiling is-docker v0.2.0
+   Compiling cpal v0.16.0
+   Compiling android_log-sys v0.3.2
+   Compiling pollster v0.4.0
+   Compiling craft-docpath v0.1.0 (https://github.com/storytold/craft-libs?rev=82a24b006eefa036b43c09a67fb9a3fbd17ffe63#82a24b00)
+   Compiling filmcraft-engine v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/engine)
+   Compiling filmcraft-gpu v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/gpu)
+   Compiling android_logger v0.15.1
+   Compiling is-wsl v0.4.0
+   Compiling craft-ui v0.1.0 (https://github.com/storytold/craft-libs?rev=5c874d51eeb3de70e735c8ce87a59a7dedd47675#5c874d51)
+   Compiling num-derive v0.4.2
+   Compiling dasp_sample v0.11.0
+   Compiling filmcraft v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/apps/filmcraft)
+   Compiling open v5.4.4
+   Compiling craft-android-glue v0.1.0 (/home/runner/work/craft-mobile/craft-mobile/shared/glue)
+   Compiling filmcraft-platform v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/platform)
+   Compiling arboard v3.99.0 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/arboard)
+   Compiling rfd v0.17.99 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/rfd)
+   Compiling sys-locale v0.3.2
+   Compiling subtle v2.6.1
+error[E0433]: cannot find `MessageDialog` in `rfd`
+   --> apps/filmcraft/src/android_lib.rs:162:22
+    |
+162 |         let _ = rfd::MessageDialog::new().set_title("FilmCraft").set_description(&msg).set_level(rfd::MessageLevel::Error).show();
+    |                      ^^^^^^^^^^^^^ could not find `MessageDialog` in `rfd`
+
+error[E0433]: cannot find `MessageLevel` in `rfd`
+   --> apps/filmcraft/src/android_lib.rs:162:103
+    |
+162 |         let _ = rfd::MessageDialog::new().set_title("FilmCraft").set_description(&msg).set_level(rfd::MessageLevel::Error).show();
+    |                                                                                                       ^^^^^^^^^^^^ could not find `MessageLevel` in `rfd`
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `filmcraft` (lib) due to 2 previous errors
+note: If the build failed due to a missing target, you can run this command:
+note: 
+note:     rustup target install aarch64-linux-android
