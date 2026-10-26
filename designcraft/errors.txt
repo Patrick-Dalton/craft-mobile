@@ -1,0 +1,217 @@
+sha f5ba3dc5bade9290fff274481578f37649b412cc run 40386728533
+758:error[E0432]: unresolved import `winit::platform::x11`
+759:   --> apps/designcraft/src/android_lib.rs:457:34
+765:   --> /home/runner/.cargo/git/checkouts/winit-0b02aa607dc0343f/3d51077/src/platform/mod.rs:22:9
+772:error[E0433]: cannot find `MessageDialog` in `rfd`
+773:   --> apps/designcraft/src/android_lib.rs:308:27
+778:error[E0433]: cannot find `MessageLevel` in `rfd`
+779:   --> apps/designcraft/src/android_lib.rs:309:29
+784:error[E0433]: cannot find `MessageButtons` in `rfd`
+785:   --> apps/designcraft/src/android_lib.rs:312:31
+790:error[E0433]: cannot find `MessageDialogResult` in `rfd`
+791:   --> apps/designcraft/src/android_lib.rs:314:27
+796:error[E0599]: no method named `with_x11` found for mutable reference `&mut EventLoopBuilder<eframe::UserEvent>` in the current scope
+797:   --> apps/designcraft/src/android_lib.rs:458:15
+804:error: could not compile `designcraft` (lib) due to 6 previous errors
+--- tail ---
+   Compiling ahash v0.8.12
+   Compiling shlex v2.0.1
+   Compiling ndk-context v0.1.1
+   Compiling bit-vec v0.9.1
+   Compiling utf8_iter v1.0.4
+   Compiling unicode-width v0.2.2
+   Compiling unicode-general-category v1.1.0
+   Compiling icu_properties_data v2.3.0
+   Compiling icu_normalizer_data v2.3.0
+   Compiling ash v0.38.0+1.3.281
+   Compiling find-msvc-tools v0.1.14
+   Compiling pkg-config v0.3.34
+   Compiling fastrand v2.5.0
+   Compiling phf_generator v0.13.1
+   Compiling cc v1.5.1
+   Compiling wayland-sys v0.31.11
+   Compiling codespan-reporting v0.13.1
+   Compiling bit-set v0.10.0
+   Compiling icu_collections v2.3.0
+   Compiling resvg v0.47.0
+   Compiling icu_provider v2.3.1
+   Compiling num_enum_derive v0.7.6
+   Compiling brotli-decompressor v5.0.3
+   Compiling vello_common v0.1.0
+   Compiling emath v0.36.2
+   Compiling spirv v0.4.0+sdk-1.4.341.0
+   Compiling uuid v1.26.1
+   Compiling ryu v1.0.23
+   Compiling bit-vec v0.8.0
+   Compiling allocator-api2 v0.2.21
+   Compiling khronos-egl v6.0.0
+   Compiling bit-set v0.8.0
+   Compiling pdf-writer v0.15.0
+   Compiling hashbrown v0.16.1
+   Compiling accesskit v0.24.1
+   Compiling ecolor v0.36.2
+   Compiling vello_cpu v0.1.0
+   Compiling num_enum v0.7.6
+   Compiling brotli v8.0.4
+   Compiling android-activity v0.6.1
+   Compiling phf_macros v0.13.1
+   Compiling skrifa v0.42.1
+   Compiling write-fonts v0.48.1
+   Compiling wgpu-types v30.0.1
+   Compiling dlib v0.5.3
+   Compiling harfrust v0.12.0
+   Compiling zopfli v0.8.3
+   Compiling wgpu-hal v30.0.1
+   Compiling nohash-hasher v0.2.0
+   Compiling epaint_default_fonts v0.36.2
+   Compiling presser v0.3.1
+   Compiling hayro-postscript v0.1.0
+   Compiling self_cell v1.3.0
+   Compiling hayro-cmap v0.1.0 (https://github.com/storytold/craft-libs?rev=9f75d3dc19b4b514c4f3d4847ed1ec1b0e86b4ef#9f75d3dc)
+   Compiling gpu-allocator v0.28.0
+   Compiling epaint v0.36.2
+   Compiling phf v0.13.1
+   Compiling zip v3.0.0
+   Compiling wgpu-naga-bridge v30.0.1
+   Compiling subsetter v0.2.6
+   Compiling icu_normalizer v2.3.0
+   Compiling icu_properties v2.3.0
+   Compiling ndk v0.9.0
+   Compiling hayro-write v0.7.0
+   Compiling fancy-regex v0.19.2
+   Compiling designcraft-images v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/images)
+   Compiling vello_common v0.0.8
+   Compiling serde_spanned v1.1.1
+   Compiling winit v0.30.13 (https://github.com/storytold/winit.git?rev=3d51077fd1a966f84df9ef287839dc84fd5b4ca7#3d51077f)
+   Compiling itertools v0.15.0
+   Compiling android_system_properties v0.1.6
+   Compiling ordered-float v5.5.0
+   Compiling tracing-core v0.1.36
+   Compiling xmp-writer v0.3.3
+   Compiling android-properties v0.2.2
+   Compiling glow v0.17.0
+   Compiling pin-project-lite v0.2.17
+   Compiling renderdoc-sys v1.1.0
+   Compiling hypher v0.1.8
+   Compiling toml_writer v1.1.2+spec-1.1.0
+   Compiling toml v1.1.6+spec-1.1.0
+   Compiling designcraft-compose v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/compose)
+   Compiling tracing v0.1.44
+   Compiling egui v0.36.2
+   Compiling krilla v0.8.2 (https://github.com/storytold/craft-libs?rev=9f75d3dc19b4b514c4f3d4847ed1ec1b0e86b4ef#9f75d3dc)
+   Compiling vello_cpu v0.0.8
+   Compiling idna_adapter v1.2.2
+   Compiling hayro-interpret v0.7.0 (https://github.com/storytold/craft-libs?rev=9f75d3dc19b4b514c4f3d4847ed1ec1b0e86b4ef#9f75d3dc)
+   Compiling pic-scale v0.7.12
+   Compiling wgpu-core v30.0.1
+   Compiling dpi v0.1.2
+   Compiling smol_str v0.2.2
+   Compiling percent-encoding v2.3.2
+   Compiling cursor-icon v1.2.0
+   Compiling litrs v1.0.0
+   Compiling document-features v0.2.12
+   Compiling form_urlencoded v1.2.2
+   Compiling hayro v0.7.1 (https://github.com/storytold/craft-libs?rev=9f75d3dc19b4b514c4f3d4847ed1ec1b0e86b4ef#9f75d3dc)
+   Compiling idna v1.1.0
+   Compiling wgpu-core-deps-windows-linux-android v30.0.1
+   Compiling vello_common v0.2.0
+   Compiling wgpu v30.0.1
+   Compiling crossbeam-channel v0.5.17
+   Compiling getrandom v0.4.3
+   Compiling rustix v1.1.5
+   Compiling ordered-channel v1.2.0
+   Compiling glifo v0.3.0
+   Compiling url v2.5.8
+   Compiling craft-pdf v0.1.0 (https://github.com/storytold/craft-libs?rev=9f75d3dc19b4b514c4f3d4847ed1ec1b0e86b4ef#9f75d3dc)
+   Compiling errno v0.3.14
+   Compiling quick-xml v0.41.0
+   Compiling thread_local v1.1.10
+   Compiling linux-raw-sys v0.12.1
+   Compiling web-time v1.1.0
+   Compiling vello_cpu v0.2.0
+   Compiling webbrowser v1.2.4
+   Compiling accesskit_winit v0.32.2
+   Compiling krilla-svg v0.8.1
+   Compiling type-map v0.5.1
+   Compiling cesu8 v1.1.0
+   Compiling jni v0.21.1
+   Compiling tempfile v3.27.0
+   Compiling designcraft-pdf v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/pdf)
+   Compiling egui-winit v0.36.2
+   Compiling designcraft-render v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/render)
+   Compiling egui-wgpu v0.36.2
+   Compiling designcraft-ui-egui v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/ui-egui)
+   Compiling designcraft-idml v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/idml)
+   Compiling designcraft-textimport v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/textimport)
+   Compiling designcraft-pptx v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/pptx)
+   Compiling designcraft-tools v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/tools)
+   Compiling winresource v0.1.31
+   Compiling designcraft-format v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/format)
+   Compiling designcraft-epub v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/epub)
+   Compiling env_filter v0.1.4
+   Compiling caseless v0.2.2
+   Compiling craft-docpath v0.1.0 (https://github.com/storytold/craft-libs?rev=82a24b006eefa036b43c09a67fb9a3fbd17ffe63#82a24b00)
+   Compiling indd v0.1.0 (https://github.com/storytold/indd-utils?branch=main#7f3060e5)
+   Compiling craft-print v0.1.0 (https://github.com/storytold/craft-libs?rev=d991bf6792f8ade99c51358bf3c1d902c8cd96b5#d991bf67)
+   Compiling craft-atomic v0.1.0 (https://github.com/storytold/craft-libs?rev=e9546e191dd62f2bc1d61eca45dbdc2f1b3c1d8e#e9546e19)
+   Compiling pollster v1.0.1
+   Compiling android_log-sys v0.3.2
+   Compiling android_logger v0.15.1
+   Compiling eframe v0.36.2
+   Compiling designcraft v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/apps/designcraft)
+   Compiling craft-ui v0.1.0 (https://github.com/storytold/craft-libs?rev=5c874d51eeb3de70e735c8ce87a59a7dedd47675#5c874d51)
+   Compiling craft-android-glue v0.1.0 (/home/runner/work/craft-mobile/craft-mobile/shared/glue)
+   Compiling rfd v0.17.99 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/rfd)
+   Compiling designcraft-engine v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/engine)
+   Compiling arboard v3.99.0 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/arboard)
+error[E0432]: unresolved import `winit::platform::x11`
+   --> apps/designcraft/src/android_lib.rs:457:34
+    |
+457 |             use winit::platform::x11::EventLoopBuilderExtX11;
+    |                                  ^^^ could not find `x11` in `platform`
+    |
+note: found an item that was configured out
+   --> /home/runner/.cargo/git/checkouts/winit-0b02aa607dc0343f/3d51077/src/platform/mod.rs:22:9
+    |
+ 21 | #[cfg(any(x11_platform, docsrs))]
+    |          ---------------------- the item is gated here
+ 22 | pub mod x11;
+    |         ^^^
+
+error[E0433]: cannot find `MessageDialog` in `rfd`
+   --> apps/designcraft/src/android_lib.rs:308:27
+    |
+308 |         let answer = rfd::MessageDialog::new()
+    |                           ^^^^^^^^^^^^^ could not find `MessageDialog` in `rfd`
+
+error[E0433]: cannot find `MessageLevel` in `rfd`
+   --> apps/designcraft/src/android_lib.rs:309:29
+    |
+309 |             .set_level(rfd::MessageLevel::Warning)
+    |                             ^^^^^^^^^^^^ could not find `MessageLevel` in `rfd`
+
+error[E0433]: cannot find `MessageButtons` in `rfd`
+   --> apps/designcraft/src/android_lib.rs:312:31
+    |
+312 |             .set_buttons(rfd::MessageButtons::YesNo)
+    |                               ^^^^^^^^^^^^^^ could not find `MessageButtons` in `rfd`
+
+error[E0433]: cannot find `MessageDialogResult` in `rfd`
+   --> apps/designcraft/src/android_lib.rs:314:27
+    |
+314 |         if answer != rfd::MessageDialogResult::Yes {
+    |                           ^^^^^^^^^^^^^^^^^^^ could not find `MessageDialogResult` in `rfd`
+
+error[E0599]: no method named `with_x11` found for mutable reference `&mut EventLoopBuilder<eframe::UserEvent>` in the current scope
+   --> apps/designcraft/src/android_lib.rs:458:15
+    |
+458 |             b.with_x11();
+    |               ^^^^^^^^ method not found in `&mut EventLoopBuilder<eframe::UserEvent>`
+
+Some errors have detailed explanations: E0432, E0433, E0599.
+For more information about an error, try `rustc --explain E0432`.
+error: could not compile `designcraft` (lib) due to 6 previous errors
+note: If the build failed due to a missing target, you can run this command:
+note: 
+note:     rustup target install aarch64-linux-android
+--- gradle ---
