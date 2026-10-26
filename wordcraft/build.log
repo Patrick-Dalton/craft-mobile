@@ -1,0 +1,99 @@
+warning: Environment variable `ANDROID_NDK_HOME = "/usr/local/lib/android/sdk/ndk/30.0.16248370"` doesn't match `ANDROID_NDK_ROOT = "/usr/local/lib/android/sdk/ndk/27.3.13750724"`
+    Building arm64-v8a (aarch64-linux-android)
+    Updating crates.io index
+     Locking 17 packages to highest Rust 1.99.1 compatible versions
+      Adding android_log-sys v0.3.2
+      Adding android_logger v0.15.1
+      Adding arboard v3.99.0 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/arboard)
+      Adding cesu8 v1.1.0
+      Adding craft-android-glue v0.1.0 (/home/runner/work/craft-mobile/craft-mobile/shared/glue)
+      Adding env_filter v0.1.4
+      Adding jni v0.21.1
+      Adding rfd v0.17.99 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/rfd)
+ Downgrading windows-sys v0.60.2 -> v0.45.0
+ Downgrading windows-targets v0.53.5 -> v0.42.2
+ Downgrading windows_aarch64_gnullvm v0.53.1 -> v0.42.2
+ Downgrading windows_aarch64_msvc v0.53.1 -> v0.42.2
+ Downgrading windows_i686_gnu v0.53.1 -> v0.42.2
+ Downgrading windows_i686_msvc v0.53.1 -> v0.42.2
+ Downgrading windows_x86_64_gnu v0.53.1 -> v0.42.2
+ Downgrading windows_x86_64_gnullvm v0.53.1 -> v0.42.2
+ Downgrading windows_x86_64_msvc v0.53.1 -> v0.42.2
+   Compiling wordcraft-geom v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/geom)
+   Compiling wordcraft-fonts v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/fonts)
+   Compiling wordcraft-proof v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/proof)
+   Compiling wordcraft-metafile v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/metafile)
+   Compiling wordcraft-doc v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/doc)
+   Compiling wordcraft-ui-egui v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/ui-egui)
+   Compiling wordcraft v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/apps/wordcraft)
+   Compiling craft-android-glue v0.1.0 (/home/runner/work/craft-mobile/craft-mobile/shared/glue)
+   Compiling arboard v3.99.0 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/arboard)
+   Compiling rfd v0.17.99 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/rfd)
+   Compiling wordcraft-control-key v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/control-key)
+   Compiling wordcraft-layout v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/layout)
+   Compiling wordcraft-docx v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/docx)
+   Compiling wordcraft-formats v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/formats)
+   Compiling wordcraft-render v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/render)
+   Compiling wordcraft-pdf v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/pdf)
+   Compiling wordcraft-docbin v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/docbin)
+   Compiling wordcraft-engine v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/engine)
+   Compiling wordcraft-zotero v0.11.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/zotero)
+error[E0425]: cannot find value `picked` in this scope
+  --> apps/wordcraft/src/file_dialogs.rs:77:25
+   |
+77 |                         picked.map(|f| f.iter().map(|f| f.path().to_string_lossy().to_string()).collect())
+   |                         ^^^^^^
+...
+92 | fn picker(dialog: rfd::AsyncFileDialog, req: &FileDialogRequest) -> Picking {
+   | --------------------------------------------------------------------------- similarly named function `picker` defined here
+   |
+help: a function with a similar name exists
+   |
+77 -                         picked.map(|f| f.iter().map(|f| f.path().to_string_lossy().to_string()).collect())
+77 +                         picker.map(|f| f.iter().map(|f| f.path().to_string_lossy().to_string()).collect())
+   |
+
+error[E0308]: mismatched types
+  --> apps/wordcraft/src/animations.rs:18:37
+   |
+18 | pub fn hook(ctx: &egui::Context) -> Box<dyn Fn() -> Option<bool>> {
+   |        ----                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `Box<dyn Fn() -> Option<bool>>`, found `()`
+   |        |
+   |        implicitly returns `()` as its body has no tail or `return` expression
+   |
+   = note: expected struct `std::boxed::Box<(dyn Fn() -> Option<bool> + 'static)>`
+           found unit type `()`
+
+error[E0308]: mismatched types
+  --> apps/wordcraft/src/default_apps.rs:30:5
+   |
+23 | pub fn hook() -> Option<Hook> {
+   | -----------------------------
+   | |                |
+   | |                expected `Option<Box<dyn Fn() -> Result<DefaultApp, String>>>` because of return type
+   | function `hook` defined here
+...
+30 |     hook
+   |     ^^^^ expected `Option<Box<dyn Fn() -> _>>`, found fn item
+   |
+   = note: expected enum `Option<std::boxed::Box<(dyn Fn() -> std::result::Result<DefaultApp, std::string::String> + 'static)>>`
+           found fn item `fn() -> Option<std::boxed::Box<(dyn Fn() -> std::result::Result<DefaultApp, std::string::String> + 'static)>> {default_apps::hook}`
+   = note: the full name for the type has been written to '/home/runner/work/craft-mobile/craft-mobile/upstream/target/aarch64-linux-android/release/deps/craft_app.long-type-13755309159578110104.txt'
+   = note: consider using `--verbose` to print the full type name to the console
+help: use parentheses to call this function
+   |
+30 |     hook()
+   |         ++
+
+error[E0425]: cannot find function `portal_or_zenity_missing` in this scope
+   --> apps/wordcraft/src/file_dialogs.rs:155:5
+    |
+155 |     portal_or_zenity_missing()
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+Some errors have detailed explanations: E0308, E0425.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `wordcraft` (lib) due to 4 previous errors
+note: If the build failed due to a missing target, you can run this command:
+note: 
+note:     rustup target install aarch64-linux-android
