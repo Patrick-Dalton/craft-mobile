@@ -1,17 +1,17 @@
 {
   "apps": [
     { "id": "pdfcraft", "name": "PdfCraft", "subtitle": "Ler, anotar, preencher, assinar e organizar PDFs", "inspired": "Acrobat", "package": "io.github.patrickdalton.craft.pdfcraft", "available": true },
-    { "id": "photocraft", "name": "PhotoCraft", "subtitle": "Edição de imagens com camadas, máscaras e PSD", "inspired": "Photoshop", "package": "io.github.patrickdalton.craft.photocraft", "available": false },
-    { "id": "lightcraft", "name": "LightCraft", "subtitle": "Biblioteca de fotos e revelação de RAW", "inspired": "Lightroom", "package": "io.github.patrickdalton.craft.lightcraft", "available": false },
-    { "id": "filmcraft", "name": "FilmCraft", "subtitle": "Edição de vídeo, cor e som", "inspired": "Premiere", "package": "io.github.patrickdalton.craft.filmcraft", "available": false },
-    { "id": "vectorcraft", "name": "VectorCraft", "subtitle": "Ilustração vetorial", "inspired": "Illustrator", "package": "io.github.patrickdalton.craft.vectorcraft", "available": false },
-    { "id": "effectcraft", "name": "EffectCraft", "subtitle": "Motion graphics e efeitos visuais", "inspired": "After Effects", "package": "io.github.patrickdalton.craft.effectcraft", "available": false },
-    { "id": "designcraft", "name": "DesignCraft", "subtitle": "Diagramação e publicação", "inspired": "InDesign", "package": "io.github.patrickdalton.craft.designcraft", "available": false },
+    { "id": "photocraft", "name": "PhotoCraft", "subtitle": "Edição de imagens com camadas, máscaras e PSD", "inspired": "Photoshop", "package": "io.github.patrickdalton.craft.photocraft", "available": true },
+    { "id": "lightcraft", "name": "LightCraft", "subtitle": "Biblioteca de fotos e revelação de RAW", "inspired": "Lightroom", "package": "io.github.patrickdalton.craft.lightcraft", "available": true },
+    { "id": "filmcraft", "name": "FilmCraft", "subtitle": "Edição de vídeo, cor e som", "inspired": "Premiere", "package": "io.github.patrickdalton.craft.filmcraft", "available": true },
+    { "id": "vectorcraft", "name": "VectorCraft", "subtitle": "Ilustração vetorial", "inspired": "Illustrator", "package": "io.github.patrickdalton.craft.vectorcraft", "available": true },
+    { "id": "effectcraft", "name": "EffectCraft", "subtitle": "Motion graphics e efeitos visuais", "inspired": "After Effects", "package": "io.github.patrickdalton.craft.effectcraft", "available": true },
+    { "id": "designcraft", "name": "DesignCraft", "subtitle": "Diagramação e publicação", "inspired": "InDesign", "package": "io.github.patrickdalton.craft.designcraft", "available": true },
     { "id": "figcraft", "name": "FigCraft", "subtitle": "Design de interfaces e protótipos", "inspired": "Figma", "package": "io.github.patrickdalton.craft.figcraft", "available": false },
     { "id": "wordcraft", "name": "WordCraft", "subtitle": "Processador de texto", "inspired": "Word", "package": "io.github.patrickdalton.craft.wordcraft", "available": false },
-    { "id": "gridcraft", "name": "GridCraft", "subtitle": "Planilhas", "inspired": "Excel", "package": "io.github.patrickdalton.craft.gridcraft", "available": false },
-    { "id": "deckcraft", "name": "DeckCraft", "subtitle": "Apresentações de slides", "inspired": "PowerPoint", "package": "io.github.patrickdalton.craft.deckcraft", "available": false },
-    { "id": "soundcraft", "name": "SoundCraft", "subtitle": "Gravação e mixagem de áudio", "inspired": "Pro Tools", "package": "io.github.patrickdalton.craft.soundcraft", "available": false },
+    { "id": "gridcraft", "name": "GridCraft", "subtitle": "Planilhas", "inspired": "Excel", "package": "io.github.patrickdalton.craft.gridcraft", "available": true },
+    { "id": "deckcraft", "name": "DeckCraft", "subtitle": "Apresentações de slides", "inspired": "PowerPoint", "package": "io.github.patrickdalton.craft.deckcraft", "available": true },
+    { "id": "soundcraft", "name": "SoundCraft", "subtitle": "Gravação e mixagem de áudio", "inspired": "Pro Tools", "package": "io.github.patrickdalton.craft.soundcraft", "available": true },
     { "id": "cadcraft", "name": "CADCraft", "subtitle": "Desenho técnico e CAD", "inspired": "AutoCAD", "package": "io.github.patrickdalton.craft.cadcraft", "available": false }
   ]
 }

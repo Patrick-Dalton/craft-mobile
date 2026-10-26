@@ -71,11 +71,13 @@ craft-android-glue = {{ path = "{rel(shared / "glue", crate)}" }}
 """
 manifest.write_text(m, encoding="utf-8")
 
-# 4. Sources: run_native through the glue, and desktop-Linux code kept off Android.
+# 4. Sources: run_native through the glue.
 #
 # Rust counts Android as `unix`, so `cfg(all(unix, not(target_os = "macos")))` (the apps' way of
-# saying "Linux and the BSDs") also selects X11 and Wayland code on Android. Every cfg that names
-# unix and excludes macOS, but says nothing about Android, gets `not(target_os = "android")`.
+# saying "Linux and the BSDs") also selects X11 and Wayland code on Android. In `main.rs` (step 5)
+# such cfgs get `not(target_os = "android")`: that is where the apps set up the X11 event loop.
+# Not elsewhere: in other modules the same cfg often marks the only Unix implementation of a
+# function, which Android then needs.
 def linux_only(expr: str) -> bool:
     return "unix" in expr and "macos" in expr and "android" not in expr
 
@@ -102,7 +104,7 @@ def exclude_android(text: str) -> str:
 
 for src in (crate / "src").rglob("*.rs"):
     s = src.read_text(encoding="utf-8")
-    t = exclude_android(s.replace("eframe::run_native(", "craft_android_glue::run_native("))
+    t = s.replace("eframe::run_native(", "craft_android_glue::run_native(")
     if t != s:
         src.write_text(t, encoding="utf-8")
 
@@ -115,6 +117,7 @@ def drop_unsafe_code(m: re.Match) -> str:
 
 
 main = re.sub(r"^#!\[(forbid|deny)\(([^)]*)\)\]", drop_unsafe_code, main, flags=re.M)
+main = exclude_android(main)
 main += """
 
 /// Android's entry point (GameActivity): the desktop `main()`, with the activity behind eframe.
