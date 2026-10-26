@@ -1,0 +1,145 @@
+warning: Environment variable `ANDROID_NDK_HOME = "/usr/local/lib/android/sdk/ndk/30.0.16248370"` doesn't match `ANDROID_NDK_ROOT = "/usr/local/lib/android/sdk/ndk/27.3.13750724"`
+    Building arm64-v8a (aarch64-linux-android)
+    Updating crates.io index
+     Locking 21 packages to highest Rust 1.95 compatible versions
+      Adding aho-corasick v1.1.5
+      Adding android_log-sys v0.3.2
+      Adding android_logger v0.15.1
+      Adding arboard v3.99.0 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/arboard)
+      Adding cesu8 v1.1.0
+      Adding craft-android-glue v0.1.0 (/home/runner/work/craft-mobile/craft-mobile/shared/glue)
+      Adding env_filter v0.1.4
+      Adding jni v0.21.1
+      Adding regex v1.13.1
+      Adding regex-automata v0.4.18
+      Adding regex-syntax v0.8.11
+      Adding rfd v0.17.99 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/rfd)
+      Adding windows-sys v0.45.0
+      Adding windows-targets v0.42.2
+      Adding windows_aarch64_gnullvm v0.42.2
+      Adding windows_aarch64_msvc v0.42.2
+      Adding windows_i686_gnu v0.42.2
+      Adding windows_i686_msvc v0.42.2
+      Adding windows_x86_64_gnu v0.42.2
+      Adding windows_x86_64_gnullvm v0.42.2
+      Adding windows_x86_64_msvc v0.42.2
+   Compiling cadcraft-geom v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/geom)
+   Compiling cadcraft-color v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/color)
+   Compiling cadcraft-fonts v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/fonts)
+   Compiling cadcraft-dxf v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/dxf)
+   Compiling cadcraft-dwg v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/dwg)
+   Compiling cadcraft-ui-egui v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/ui-egui)
+   Compiling cadcraft v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/apps/cadcraft)
+   Compiling craft-android-glue v0.1.0 (/home/runner/work/craft-mobile/craft-mobile/shared/glue)
+   Compiling rfd v0.17.99 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/rfd)
+   Compiling cadcraft-doc v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/doc)
+   Compiling cadcraft-render v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/render)
+   Compiling cadcraft-constraints v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/constraints)
+   Compiling cadcraft-engine v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/engine)
+   Compiling cadcraft-io v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/io)
+   Compiling cadcraft-mcp v0.13.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/mcp)
+error[E0425]: cannot find function `read` in this scope
+  --> apps/cadcraft/src/desktop_theme.rs:38:28
+   |
+38 |             let mut last = read();
+   |                            ^^^^ not found in this scope
+   |
+note: function `crate::workspace::read` exists but is inaccessible
+  --> apps/cadcraft/src/workspace.rs:64:1
+   |
+64 | fn read(path: &Path) -> Result<Option<UiState>, String> {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not accessible
+help: consider importing one of these functions
+   |
+12 + use std::fs::read;
+   |
+12 + use std::ptr::read;
+   |
+12 + use core::ptr::read;
+   |
+
+error[E0425]: cannot find function `read` in this scope
+  --> apps/cadcraft/src/desktop_theme.rs:45:27
+   |
+45 |                 let now = read();
+   |                           ^^^^ not found in this scope
+   |
+note: function `crate::workspace::read` exists but is inaccessible
+  --> apps/cadcraft/src/workspace.rs:64:1
+   |
+64 | fn read(path: &Path) -> Result<Option<UiState>, String> {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not accessible
+help: consider importing one of these functions
+   |
+12 + use std::fs::read;
+   |
+12 + use std::ptr::read;
+   |
+12 + use core::ptr::read;
+   |
+
+error[E0425]: cannot find function `read` in this scope
+  --> apps/cadcraft/src/system_animations.rs:41:28
+   |
+41 |             let mut last = read();
+   |                            ^^^^ not found in this scope
+   |
+note: function `crate::workspace::read` exists but is inaccessible
+  --> apps/cadcraft/src/workspace.rs:64:1
+   |
+64 | fn read(path: &Path) -> Result<Option<UiState>, String> {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not accessible
+help: consider importing one of these functions
+   |
+14 + use std::fs::read;
+   |
+14 + use std::ptr::read;
+   |
+14 + use core::ptr::read;
+   |
+
+error[E0425]: cannot find function `read` in this scope
+  --> apps/cadcraft/src/system_animations.rs:48:27
+   |
+48 |                 let now = read();
+   |                           ^^^^ not found in this scope
+   |
+note: function `crate::workspace::read` exists but is inaccessible
+  --> apps/cadcraft/src/workspace.rs:64:1
+   |
+64 | fn read(path: &Path) -> Result<Option<UiState>, String> {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not accessible
+help: consider importing one of these functions
+   |
+14 + use std::fs::read;
+   |
+14 + use std::ptr::read;
+   |
+14 + use core::ptr::read;
+   |
+
+error[E0425]: cannot find function `read` in this scope
+  --> apps/cadcraft/src/system_animations.rs:74:36
+   |
+74 |             if let Some(animate) = read() {
+   |                                    ^^^^ not found in this scope
+   |
+note: function `crate::workspace::read` exists but is inaccessible
+  --> apps/cadcraft/src/workspace.rs:64:1
+   |
+64 | fn read(path: &Path) -> Result<Option<UiState>, String> {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not accessible
+help: consider importing one of these functions
+   |
+14 + use std::fs::read;
+   |
+14 + use std::ptr::read;
+   |
+14 + use core::ptr::read;
+   |
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `cadcraft` (lib) due to 5 previous errors
+note: If the build failed due to a missing target, you can run this command:
+note: 
+note:     rustup target install aarch64-linux-android
