@@ -13,10 +13,10 @@ Página de download: https://patrick-dalton.github.io/craft-mobile/
 
 ## Estado
 
-| App | Android |
-| --- | --- |
-| PdfCraft | em andamento |
-| Os outros 12 | em breve |
+Os 13 apps compilam para Android (arm64) e estão no Hub. Ainda não foram testados num aparelho.
+
+- **PdfCraft:** camada própria (`apps/pdfcraft`), com "Abrir com" e "Compartilhar".
+- **Os outros 12:** o `main()` de desktop de cada um, via `shared/glue` e `shared/scripts/androidify.py`, compilados pelo workflow `apps.yml`.
 
 ## Assinatura dos APKs
 

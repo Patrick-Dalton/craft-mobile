@@ -7,11 +7,11 @@
     { "id": "vectorcraft", "name": "VectorCraft", "subtitle": "Ilustração vetorial", "inspired": "Illustrator", "package": "io.github.patrickdalton.craft.vectorcraft", "available": true },
     { "id": "effectcraft", "name": "EffectCraft", "subtitle": "Motion graphics e efeitos visuais", "inspired": "After Effects", "package": "io.github.patrickdalton.craft.effectcraft", "available": true },
     { "id": "designcraft", "name": "DesignCraft", "subtitle": "Diagramação e publicação", "inspired": "InDesign", "package": "io.github.patrickdalton.craft.designcraft", "available": true },
-    { "id": "figcraft", "name": "FigCraft", "subtitle": "Design de interfaces e protótipos", "inspired": "Figma", "package": "io.github.patrickdalton.craft.figcraft", "available": false },
-    { "id": "wordcraft", "name": "WordCraft", "subtitle": "Processador de texto", "inspired": "Word", "package": "io.github.patrickdalton.craft.wordcraft", "available": false },
+    { "id": "figcraft", "name": "FigCraft", "subtitle": "Design de interfaces e protótipos", "inspired": "Figma", "package": "io.github.patrickdalton.craft.figcraft", "available": true },
+    { "id": "wordcraft", "name": "WordCraft", "subtitle": "Processador de texto", "inspired": "Word", "package": "io.github.patrickdalton.craft.wordcraft", "available": true },
     { "id": "gridcraft", "name": "GridCraft", "subtitle": "Planilhas", "inspired": "Excel", "package": "io.github.patrickdalton.craft.gridcraft", "available": true },
     { "id": "deckcraft", "name": "DeckCraft", "subtitle": "Apresentações de slides", "inspired": "PowerPoint", "package": "io.github.patrickdalton.craft.deckcraft", "available": true },
     { "id": "soundcraft", "name": "SoundCraft", "subtitle": "Gravação e mixagem de áudio", "inspired": "Pro Tools", "package": "io.github.patrickdalton.craft.soundcraft", "available": true },
-    { "id": "cadcraft", "name": "CADCraft", "subtitle": "Desenho técnico e CAD", "inspired": "AutoCAD", "package": "io.github.patrickdalton.craft.cadcraft", "available": false }
+    { "id": "cadcraft", "name": "CADCraft", "subtitle": "Desenho técnico e CAD", "inspired": "AutoCAD", "package": "io.github.patrickdalton.craft.cadcraft", "available": true }
   ]
 }
