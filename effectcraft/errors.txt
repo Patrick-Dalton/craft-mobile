@@ -1,0 +1,214 @@
+sha f5ba3dc5bade9290fff274481578f37649b412cc run 40386728533
+847:error[E0433]: cannot find `MessageDialog` in `rfd`
+848:   --> apps/effectcraft/src/android_lib.rs:295:26
+853:error[E0433]: cannot find `MessageLevel` in `rfd`
+854:   --> apps/effectcraft/src/android_lib.rs:296:41
+859:error[E0433]: cannot find `MessageDialog` in `rfd`
+860:   --> apps/effectcraft/src/android_lib.rs:410:18
+865:error[E0433]: cannot find `MessageLevel` in `rfd`
+866:   --> apps/effectcraft/src/android_lib.rs:411:25
+871:error[E0433]: cannot find `MessageButtons` in `rfd`
+872:   --> apps/effectcraft/src/android_lib.rs:414:27
+878:error: could not compile `effectcraft` (lib) due to 5 previous errors
+--- tail ---
+   Compiling vello_cpu v0.1.0
+   Compiling symphonia-utils-xiph v0.5.5
+   Compiling wgpu-core v30.0.1
+   Compiling winit v0.30.13
+   Compiling heck v0.5.0
+   Compiling litrs v1.0.0
+   Compiling android-properties v0.2.2
+   Compiling thin-vec v0.2.20
+   Compiling self_cell v1.3.0
+   Compiling tracing-core v0.1.36
+   Compiling nohash-hasher v0.2.0
+   Compiling epaint_default_fonts v0.36.2
+   Compiling unicode-segmentation v1.13.3
+   Compiling tracing v0.1.44
+   Compiling epaint v0.36.2
+   Compiling boa_gc v0.22.0
+   Compiling document-features v0.2.12
+   Compiling strum_macros v0.28.0
+   Compiling phf v0.14.0
+   Compiling wgpu-core-deps-windows-linux-android v30.0.1
+   Compiling hayro-syntax v0.7.2 (https://github.com/storytold/craft-libs?rev=9f75d3dc19b4b514c4f3d4847ed1ec1b0e86b4ef#9f75d3dc)
+   Compiling idna_adapter v1.2.2
+   Compiling wgpu v30.0.1
+   Compiling serde_spanned v1.1.1
+   Compiling filmcraft-geom v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling getrandom v0.4.3
+   Compiling toml_writer v1.1.2+spec-1.1.0
+   Compiling dpi v0.1.2
+   Compiling rand_core v0.10.1
+   Compiling cursor-icon v1.2.0
+   Compiling percent-encoding v2.3.2
+   Compiling futures-core v0.3.34
+   Compiling smol_str v0.2.2
+   Compiling form_urlencoded v1.2.2
+   Compiling toml v1.1.6+spec-1.1.0
+   Compiling filmcraft-project v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling idna v1.1.0
+   Compiling craft-pdf v0.1.0 (https://github.com/storytold/craft-libs?rev=9f75d3dc19b4b514c4f3d4847ed1ec1b0e86b4ef#9f75d3dc)
+   Compiling boa_interner v0.22.0
+   Compiling strum v0.28.0
+   Compiling egui v0.36.2
+   Compiling event-listener v5.4.2
+   Compiling effectcraft-svg v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/svg)
+   Compiling num-bigint v0.5.1
+   Compiling pin-project-internal v1.1.13
+   Compiling equator-macro v0.4.2
+   Compiling portable-atomic v1.15.0
+   Compiling leb128fmt v0.1.0
+   Compiling futures-io v0.3.34
+   Compiling craft-docpath v0.1.0 (https://github.com/storytold/craft-libs?rev=82a24b006eefa036b43c09a67fb9a3fbd17ffe63#82a24b00)
+   Compiling time-core v0.1.9
+   Compiling filmcraft-cfb v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling num-conv v0.2.2
+   Compiling time-macros v0.2.32
+   Compiling filmcraft-interchange v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling futures-lite v2.6.1
+   Compiling wasm-encoder v0.261.0
+   Compiling equator v0.4.2
+   Compiling pin-project v1.1.13
+   Compiling boa_ast v0.22.0
+   Compiling effectcraft-pdf v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/pdf)
+   Compiling event-listener-strategy v0.5.4
+   Compiling url v2.5.8
+   Compiling chacha20 v0.10.2
+   Compiling effectcraft-psd v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/psd)
+   Compiling dynify-macros v0.1.2
+   Compiling concurrent-queue v2.5.0
+   Compiling aho-corasick v1.1.5
+   Compiling regress v0.12.0
+   Compiling num_threads v0.1.7
+   Compiling wasmi_ir v2.0.0
+   Compiling fixedbitset v0.5.7
+   Compiling deranged v0.5.8
+   Compiling extended v0.1.0
+   Compiling regex-syntax v0.8.11
+   Compiling bumpalo v3.20.3
+   Compiling powerfmt v0.2.0
+   Compiling wasmparser v0.228.0
+   Compiling hashbrown v0.14.5
+   Compiling dashmap v6.2.1
+   Compiling time v0.3.55
+   Compiling regex-automata v0.4.18
+   Compiling wast v261.0.0
+   Compiling symphonia-format-riff v0.5.5
+   Compiling futures-concurrency v7.7.1
+   Compiling boa_parser v0.22.0
+   Compiling async-channel v2.5.0
+   Compiling dynify v0.1.2
+   Compiling rand v0.10.3
+   Compiling webbrowser v1.2.4
+   Compiling effectcraft-interchange v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/interchange)
+   Compiling aligned-vec v0.6.4
+   Compiling effectcraft-lottie v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/lottie)
+   Compiling accesskit_winit v0.32.2
+   Compiling symphonia-codec-vorbis v0.5.5
+   Compiling symphonia-bundle-flac v0.5.5
+   Compiling symphonia-format-isomp4 v0.5.5
+   Compiling symphonia-format-ogg v0.5.5
+   Compiling symphonia-bundle-mp3 v0.5.5
+   Compiling filmcraft-isobmff v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling filmcraft-prores v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling filmcraft-aac v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling symphonia-codec-pcm v0.5.5
+   Compiling symphonia-codec-alac v0.5.5
+   Compiling symphonia-codec-aac v0.5.5
+   Compiling type-map v0.5.1
+   Compiling small_btree v0.1.0
+   Compiling wasmi_core v2.0.0
+   Compiling intrusive-collections v0.10.3
+   Compiling tag_ptr v0.1.0
+   Compiling oneshot v0.2.1
+   Compiling wasmi v2.0.0
+   Compiling tap v1.0.1
+   Compiling boa_engine v0.22.0
+   Compiling symphonia v0.5.5
+   Compiling egui-wgpu v0.36.2
+   Compiling effectcraft-engine v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/engine)
+   Compiling egui-winit v0.36.2
+   Compiling wat v1.261.0
+   Compiling regex v1.13.1
+   Compiling filmcraft-dnx v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling filmcraft-av1 v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling filmcraft-vp9 v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling filmcraft-h264 v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling filmcraft-hevc v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling filmcraft-mpeg2v v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling filmcraft-ac3 v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling filmcraft-mpegts v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling filmcraft-matroska v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling filmcraft-opus v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling wasmi_collections v2.0.0
+   Compiling spin v0.9.9
+   Compiling filmcraft-ogg v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling filmcraft-mxf v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling cesu8 v1.1.0
+   Compiling pollster v1.0.1
+   Compiling eframe v0.36.2
+   Compiling filmcraft-codecs v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling jni v0.21.1
+   Compiling env_filter v0.1.4
+   Compiling effectcraft-ui-egui v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/ui-egui)
+   Compiling winresource v0.1.31
+   Compiling filmcraft-h264enc v0.1.1 (https://github.com/storytold/filmcraft?rev=2c5ba7a72619935f0481f99d59409e0d1844b234#2c5ba7a7)
+   Compiling pollster v0.4.0
+   Compiling effectcraft-av1enc v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/av1enc)
+   Compiling android_log-sys v0.3.2
+   Compiling effectcraft-opusenc v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/opusenc)
+   Compiling effectcraft-vp9enc v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/vp9enc)
+   Compiling cpal v0.16.0
+   Compiling effectcraft-hevcenc v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/hevcenc)
+   Compiling effectcraft-export v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/export)
+   Compiling android_logger v0.15.1
+   Compiling effectcraft-gpu v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/gpu)
+   Compiling effectcraft-plugin v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/plugin)
+   Compiling effectcraft v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/apps/effectcraft)
+   Compiling effectcraft-media v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/media)
+   Compiling craft-ui v0.1.0 (https://github.com/storytold/craft-libs?rev=5c874d51eeb3de70e735c8ce87a59a7dedd47675#5c874d51)
+   Compiling sys-locale v0.3.2
+   Compiling num-derive v0.4.2
+   Compiling dasp_sample v0.11.0
+   Compiling craft-android-glue v0.1.0 (/home/runner/work/craft-mobile/craft-mobile/shared/glue)
+   Compiling rfd v0.17.99 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/rfd)
+   Compiling effectcraft-script v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/script)
+   Compiling effectcraft-expr v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/expr)
+   Compiling effectcraft-host v0.17.0 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/host)
+error[E0433]: cannot find `MessageDialog` in `rfd`
+   --> apps/effectcraft/src/android_lib.rs:295:26
+    |
+295 |                     rfd::MessageDialog::new()
+    |                          ^^^^^^^^^^^^^ could not find `MessageDialog` in `rfd`
+
+error[E0433]: cannot find `MessageLevel` in `rfd`
+   --> apps/effectcraft/src/android_lib.rs:296:41
+    |
+296 |                         .set_level(rfd::MessageLevel::Error)
+    |                                         ^^^^^^^^^^^^ could not find `MessageLevel` in `rfd`
+
+error[E0433]: cannot find `MessageDialog` in `rfd`
+   --> apps/effectcraft/src/android_lib.rs:410:18
+    |
+410 |     let _ = rfd::MessageDialog::new()
+    |                  ^^^^^^^^^^^^^ could not find `MessageDialog` in `rfd`
+
+error[E0433]: cannot find `MessageLevel` in `rfd`
+   --> apps/effectcraft/src/android_lib.rs:411:25
+    |
+411 |         .set_level(rfd::MessageLevel::Error)
+    |                         ^^^^^^^^^^^^ could not find `MessageLevel` in `rfd`
+
+error[E0433]: cannot find `MessageButtons` in `rfd`
+   --> apps/effectcraft/src/android_lib.rs:414:27
+    |
+414 |         .set_buttons(rfd::MessageButtons::Ok)
+    |                           ^^^^^^^^^^^^^^ could not find `MessageButtons` in `rfd`
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `effectcraft` (lib) due to 5 previous errors
+note: If the build failed due to a missing target, you can run this command:
+note: 
+note:     rustup target install aarch64-linux-android
+--- gradle ---
