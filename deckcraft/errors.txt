@@ -1,0 +1,211 @@
+sha f5ba3dc5bade9290fff274481578f37649b412cc run 40386728533
+710:error[E0432]: unresolved import `winit::platform::x11`
+711:   --> apps/deckcraft/src/android_lib.rs:241:34
+717:   --> /home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/winit-0.30.13/src/platform/mod.rs:22:9
+724:error[E0599]: no method named `set_html` found for struct `arboard::Clipboard` in the current scope
+725:  --> apps/deckcraft/src/pasteboard.rs:18:8
+730:error[E0599]: no method named `with_x11` found for mutable reference `&mut EventLoopBuilder<eframe::UserEvent>` in the current scope
+731:   --> apps/deckcraft/src/android_lib.rs:242:15
+738:error: could not compile `deckcraft` (lib) due to 3 previous errors
+--- tail ---
+   Compiling bit-set v0.10.0
+   Compiling icu_provider v2.3.1
+   Compiling num_enum v0.7.6
+   Compiling ahash v0.8.12
+   Compiling symphonia-utils-xiph v0.5.5
+   Compiling deckcraft-geom v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/geom)
+   Compiling deckcraft-color v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/color)
+   Compiling font-types v0.11.3
+   Compiling spirv v0.4.0+sdk-1.4.341.0
+   Compiling static_assertions v1.1.0
+   Compiling bumpalo v3.20.3
+   Compiling allocator-api2 v0.2.21
+   Compiling khronos-egl v6.0.0
+   Compiling unicode-general-category v1.1.0
+   Compiling hashbrown v0.16.1
+   Compiling wgpu-types v30.0.1
+   Compiling read-fonts v0.39.2
+   Compiling deckcraft-model v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/model)
+   Compiling image v0.25.10
+   Compiling ndk v0.9.0
+   Compiling android-activity v0.6.1
+   Compiling dlib v0.5.3
+   Compiling vello_common v0.1.0
+   Compiling wgpu-hal v30.0.1
+   Compiling emath v0.36.2
+   Compiling presser v0.3.1
+   Compiling uuid v1.27.0
+   Compiling accesskit v0.24.1
+   Compiling ecolor v0.36.2
+   Compiling vello_cpu v0.1.0
+   Compiling icu_normalizer v2.3.0
+   Compiling icu_properties v2.3.0
+   Compiling wgpu-naga-bridge v30.0.1
+   Compiling deckcraft-bitstream v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/bitstream)
+   Compiling harfrust v0.12.0
+   Compiling read-fonts v0.43.3
+   Compiling gpu-allocator v0.28.0
+   Compiling read-fonts v0.44.0
+   Compiling serde_spanned v1.1.1
+   Compiling winit v0.30.13
+   Compiling ordered-float v5.5.0
+   Compiling core_maths v0.1.1
+   Compiling tracing-core v0.1.36
+   Compiling self_cell v1.3.0
+   Compiling renderdoc-sys v1.1.0
+   Compiling nohash-hasher v0.2.0
+   Compiling glow v0.17.0
+   Compiling toml_writer v1.1.2+spec-1.1.0
+   Compiling android-properties v0.2.2
+   Compiling pin-project-lite v0.2.17
+   Compiling deckcraft-fonts v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/fonts)
+warning: deckcraft-fonts@0.11.1: building without craft-fonts: CRAFT_FONTS_DIR=/home/runner/work/craft-mobile/craft-mobile/upstream/../craft-fonts: /home/runner/work/craft-mobile/craft-mobile/upstream/../craft-fonts/fonts/manifest.txt: No such file or directory (os error 2)
+   Compiling skrifa v0.47.0
+   Compiling tracing v0.1.44
+   Compiling toml v1.1.6+spec-1.1.0
+   Compiling harfrust v0.13.3
+   Compiling epaint v0.36.2
+   Compiling ttf-parser v0.25.1
+   Compiling idna_adapter v1.2.2
+   Compiling skrifa v0.42.1
+   Compiling write-fonts v0.48.1
+   Compiling vello_common v0.2.0
+   Compiling iana-time-zone v0.1.65
+   Compiling crossbeam-channel v0.5.17
+   Compiling itertools v0.15.0
+   Compiling wgpu-core v30.0.1
+   Compiling ryu v1.0.23
+   Compiling litrs v1.0.0
+   Compiling arrayref v0.3.9
+   Compiling dpi v0.1.2
+   Compiling smol_str v0.2.2
+   Compiling unicode-bidi-mirroring v0.4.0
+   Compiling percent-encoding v2.3.2
+   Compiling unicode-script v0.5.8
+   Compiling strict-num v0.1.1
+   Compiling unicode-bidi v0.3.18
+   Compiling cursor-icon v1.2.0
+   Compiling unicode-properties v0.1.4
+   Compiling unicode-ccc v0.4.0
+   Compiling rustybuzz v0.20.1
+   Compiling subsetter v0.2.6
+   Compiling tiny-skia-path v0.12.0
+   Compiling form_urlencoded v1.2.2
+   Compiling egui v0.36.2
+   Compiling document-features v0.2.12
+   Compiling pdf-writer v0.15.0
+   Compiling ordered-channel v1.2.0
+   Compiling glifo v0.3.0
+   Compiling chrono v0.4.45
+   Compiling idna v1.1.0
+   Compiling wgpu-core-deps-windows-linux-android v30.0.1
+   Compiling zopfli v0.8.3
+   Compiling wgpu v30.0.1
+   Compiling aho-corasick v1.1.5
+   Compiling float-cmp v0.9.0
+   Compiling thread_local v1.1.10
+   Compiling base64 v0.22.1
+   Compiling regex-syntax v0.8.11
+   Compiling imagesize v0.14.0
+   Compiling unicode-linebreak v0.1.5
+   Compiling siphasher v1.0.4
+   Compiling xmp-writer v0.3.3
+   Compiling extended v0.1.0
+   Compiling symphonia-format-riff v0.5.5
+   Compiling krilla v0.8.2 (https://github.com/storytold/craft-libs?rev=9f75d3dc19b4b514c4f3d4847ed1ec1b0e86b4ef#9f75d3dc)
+   Compiling deckcraft-text v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/text)
+   Compiling regex-automata v0.4.18
+   Compiling vello_cpu v0.2.0
+   Compiling zip v3.0.0
+   Compiling url v2.5.8
+   Compiling deckcraft-metafile v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/metafile)
+   Compiling deckcraft-anim v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/anim)
+   Compiling symphonia-codec-vorbis v0.5.5
+   Compiling symphonia-format-mkv v0.5.5
+   Compiling symphonia-format-isomp4 v0.5.5
+   Compiling symphonia-format-ogg v0.5.5
+   Compiling symphonia-bundle-flac v0.5.5
+   Compiling symphonia-bundle-mp3 v0.5.5
+   Compiling symphonia-format-caf v0.5.5
+   Compiling symphonia-codec-pcm v0.5.5
+   Compiling symphonia-codec-aac v0.5.5
+   Compiling symphonia-codec-alac v0.5.5
+   Compiling symphonia-codec-adpcm v0.5.5
+   Compiling i_float v5.0.0
+   Compiling cesu8 v1.1.0
+   Compiling web-time v1.1.0
+   Compiling i_shape v5.0.0
+   Compiling jni v0.21.1
+   Compiling symphonia v0.5.5
+   Compiling deckcraft-render v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/render)
+   Compiling webbrowser v1.2.4
+   Compiling craft-pdf v0.1.0 (https://github.com/storytold/craft-libs?rev=9f75d3dc19b4b514c4f3d4847ed1ec1b0e86b4ef#9f75d3dc)
+   Compiling regex v1.13.1
+   Compiling accesskit_winit v0.32.2
+   Compiling deckcraft-vp9 v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/vp9)
+   Compiling deckcraft-av1 v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/av1)
+   Compiling deckcraft-h264 v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/h264)
+   Compiling deckcraft-hevc v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/hevc)
+   Compiling deckcraft-isobmff v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/isobmff)
+   Compiling deckcraft-matroska v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/matroska)
+   Compiling type-map v0.5.1
+   Compiling quick-xml v0.41.0
+   Compiling i_tree v0.19.0
+   Compiling i_key_sort v0.11.0
+   Compiling deckcraft-opus v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/opus)
+   Compiling deckcraft-ogg v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/ogg)
+   Compiling i_overlay v9.0.0
+   Compiling deckcraft-media v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/media)
+   Compiling deckcraft-pptx v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/pptx)
+   Compiling egui-wgpu v0.36.2
+   Compiling egui-winit v0.36.2
+   Compiling env_filter v0.1.4
+   Compiling deckcraft-pdf v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/pdf)
+   Compiling deckcraft-ui-egui v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/ui-egui)
+   Compiling deckcraft-format v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/format)
+   Compiling winresource v0.1.31
+   Compiling android_log-sys v0.3.2
+   Compiling cpal v0.16.0
+   Compiling pollster v1.0.1
+   Compiling eframe v0.36.2
+   Compiling android_logger v0.15.1
+   Compiling deckcraft v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/apps/deckcraft)
+   Compiling deckcraft-engine v0.11.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/engine)
+   Compiling num-derive v0.4.2
+   Compiling dasp_sample v0.11.0
+   Compiling craft-android-glue v0.1.0 (/home/runner/work/craft-mobile/craft-mobile/shared/glue)
+   Compiling arboard v3.99.0 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/arboard)
+   Compiling rfd v0.17.99 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/rfd)
+error[E0432]: unresolved import `winit::platform::x11`
+   --> apps/deckcraft/src/android_lib.rs:241:34
+    |
+241 |             use winit::platform::x11::EventLoopBuilderExtX11;
+    |                                  ^^^ could not find `x11` in `platform`
+    |
+note: found an item that was configured out
+   --> /home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/winit-0.30.13/src/platform/mod.rs:22:9
+    |
+ 21 | #[cfg(any(x11_platform, docsrs))]
+    |          ---------------------- the item is gated here
+ 22 | pub mod x11;
+    |         ^^^
+
+error[E0599]: no method named `set_html` found for struct `arboard::Clipboard` in the current scope
+  --> apps/deckcraft/src/pasteboard.rs:18:8
+   |
+18 |     cb.set_html(html, Some(text)).is_ok()
+   |        ^^^^^^^^ method not found in `arboard::Clipboard`
+
+error[E0599]: no method named `with_x11` found for mutable reference `&mut EventLoopBuilder<eframe::UserEvent>` in the current scope
+   --> apps/deckcraft/src/android_lib.rs:242:15
+    |
+242 |             b.with_x11();
+    |               ^^^^^^^^ method not found in `&mut EventLoopBuilder<eframe::UserEvent>`
+
+Some errors have detailed explanations: E0432, E0599.
+For more information about an error, try `rustc --explain E0432`.
+error: could not compile `deckcraft` (lib) due to 3 previous errors
+note: If the build failed due to a missing target, you can run this command:
+note: 
+note:     rustup target install aarch64-linux-android
+--- gradle ---
