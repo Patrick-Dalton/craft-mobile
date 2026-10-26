@@ -120,8 +120,15 @@ jobs:
         run: |
           touch build.log gradle.log
           { echo "sha ${{ github.sha }} run ${{ github.run_id }}"; grep -n -E '^(error|warning: unused)|^error\[|-->|^\s+\|' build.log | head -n 1500 || true; echo '--- tail ---'; tail -n 200 build.log; echo '--- gradle ---'; grep -n -E 'error|FAILURE|What went wrong|e: |> ' gradle.log | head -n 300 || true; tail -n 120 gradle.log; } > errors.txt
-          gh release delete pdfcraft-buildlog --cleanup-tag --yes || true
-          gh release create pdfcraft-buildlog errors.txt build.log gradle.log --title "PdfCraft: log da última falha" --notes "Erros da compilação Android que falhou." --prerelease
+          # Pushed to the `buildlogs` branch: raw.githubusercontent.com serves it to anyone, with
+          # no API rate limit.
+          logs="$RUNNER_TEMP/buildlogs"
+          mkdir -p "$logs/pdfcraft" && cp errors.txt build.log gradle.log "$logs/pdfcraft/"
+          cd "$logs"
+          git init -q -b buildlogs
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com add -A
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -qm "PdfCraft: log da falha em ${{ github.sha }}"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" HEAD:refs/heads/buildlogs
 
       - uses: actions/upload-artifact@v4
         with:
