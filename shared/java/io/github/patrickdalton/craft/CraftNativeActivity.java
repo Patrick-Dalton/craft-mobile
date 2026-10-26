@@ -1,6 +1,6 @@
 package io.github.patrickdalton.craft;
 
-import android.app.NativeActivity;
+import com.google.androidgamesdk.GameActivity;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -33,7 +33,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * The activity every Craft app runs in: a NativeActivity (the Rust app draws everything) plus the
+ * The activity every Craft app runs in: a GameActivity (the Rust app draws everything; GameActivity
+ * adds the soft keyboard's text input) plus the
  * operating-system services the desktop apps get from their platform.
  *
  * <p>Files never reach Rust as content:// URIs. A picked or received document is copied into the
@@ -41,7 +42,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * sees it and copies it back to the document. A "save as" target is an empty local path that is
  * copied to the chosen document as soon as the app has written it.
  */
-public class CraftNativeActivity extends NativeActivity {
+public class CraftNativeActivity extends GameActivity {
     private static final String TAG = "CraftActivity";
     private static final int PICK_REQUEST = 0xC4AF;
 
@@ -148,14 +149,14 @@ public class CraftNativeActivity extends NativeActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // AppCompat requires the super call (lint fails the release build without it).
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_REQUEST) {
             pickResultCode = resultCode;
             pickResultData = data;
             CountDownLatch latch = pickLatch;
             if (latch != null) latch.countDown();
-            return;
         }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private Intent pickIntent(int kind, String[] mimes, String name) {

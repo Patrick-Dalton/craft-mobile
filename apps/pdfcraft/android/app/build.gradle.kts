@@ -55,3 +55,10 @@ android {
         jniLibs { useLegacyPackaging = true }
     }
 }
+
+dependencies {
+    // android-activity 0.6 (in winit) supports GameActivity 4.4.0. Its own native glue replaces
+    // the library's prefab C++ layer, so prefab stays off.
+    implementation("androidx.games:games-activity:4.4.0")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+}

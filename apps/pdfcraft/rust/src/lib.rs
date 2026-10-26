@@ -1,6 +1,6 @@
 //! PdfCraft on Android.
 //!
-//! The whole desktop UI (`pdfcraft-ui-egui`) runs unchanged inside a `NativeActivity`. What the
+//! The whole desktop UI (`pdfcraft-ui-egui`) runs unchanged inside a `GameActivity`. What the
 //! desktop gets from the operating system comes from the Java side instead
 //! (`CraftNativeActivity`, shared by every Craft app):
 //! - file pickers: the `rfd` shim asks the activity for the Storage Access Framework pickers;

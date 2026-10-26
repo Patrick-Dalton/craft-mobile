@@ -1,6 +1,6 @@
 [package]
 name = "pdfcraft-android"
-description = "PdfCraft on Android: the egui app in a NativeActivity"
+description = "PdfCraft on Android: the egui app in a GameActivity"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -14,7 +14,7 @@ path = "src/lib.rs"
 
 [target.'cfg(target_os = "android")'.dependencies]
 pdfcraft-ui-egui = { workspace = true }
-eframe = { workspace = true, features = ["default_fonts", "glow", "persistence", "android-native-activity"] }
+eframe = { workspace = true, features = ["default_fonts", "glow", "persistence", "android-game-activity"] }
 egui = { workspace = true, features = ["default_fonts", "monochrome_emoji_fonts"] }
 log = { workspace = true }
 android_logger = "0.15"

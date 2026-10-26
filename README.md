@@ -6,7 +6,7 @@ Página de download: https://patrick-dalton.github.io/craft-mobile/
 
 ## Como funciona
 
-- **Apps:** cada app Craft é Rust + egui. O app Android carrega a mesma interface (`*-ui-egui`) numa `NativeActivity`, sem WebView. O código original não é alterado: o workflow baixa a versão fixada em `apps/<app>/upstream.env` e acrescenta a camada Android.
+- **Apps:** cada app Craft é Rust + egui. O app Android carrega a mesma interface (`*-ui-egui`) numa `GameActivity`, sem WebView. O código original não é alterado: o workflow baixa a versão fixada em `apps/<app>/upstream.env` e acrescenta a camada Android.
 - **`shared/java/CraftNativeActivity.java`:** o que o Windows/macOS/Linux dão aos apps e o Android não dá do mesmo jeito: seletores de arquivo (Storage Access Framework), "Abrir com" e "Compartilhar", área de transferência.
 - **`shared/shims/rfd` e `shared/shims/arboard`:** substitutos Android das bibliotecas de diálogos de arquivo e de área de transferência, colocados só na compilação Android (`[patch.crates-io]`).
 - **Hub (`hub/`):** Kotlin + Jetpack Compose. Lê `catalog.json`, mostra a versão publicada de cada app (`<app>-latest` nos Releases) e instala o APK.
