@@ -16,6 +16,8 @@ path = "src/lib.rs"
 pdfcraft-ui-egui = { workspace = true }
 eframe = { workspace = true, features = ["default_fonts", "glow", "persistence", "android-game-activity"] }
 egui = { workspace = true, features = ["default_fonts", "monochrome_emoji_fonts"] }
+# The same winit as eframe (the workspace patches it to storytold's fork), for `AndroidApp`.
+winit = { version = "0.30", default-features = false, features = ["android-game-activity"] }
 log = { workspace = true }
 android_logger = "0.15"
 jni = "0.21"

@@ -12,7 +12,7 @@
 use std::path::Path;
 use std::sync::{Arc, Mutex, OnceLock};
 
-use eframe::egui_winit::winit::platform::android::activity::AndroidApp;
+use winit::platform::android::activity::AndroidApp;
 use pdfcraft_ui_egui::{OsEvent, PdfCraftApp};
 
 /// Where the app keeps its settings in eframe's storage (the desktop app's key).
