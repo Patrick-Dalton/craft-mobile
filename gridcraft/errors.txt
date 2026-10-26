@@ -1,0 +1,206 @@
+sha f5ba3dc5bade9290fff274481578f37649b412cc run 40386728533
+522:error[E0599]: no method named `set_html` found for mutable reference `&mut arboard::Clipboard` in the current scope
+523:   --> apps/gridcraft/src/android_lib.rs:160:64
+529:error: could not compile `gridcraft` (lib) due to 1 previous error
+--- tail ---
+   Compiling toml_parser v1.1.3+spec-1.1.0
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+   Compiling arrayvec v0.7.8
+   Compiling once_cell v1.21.4
+   Compiling smallvec v1.16.2
+   Compiling equivalent v1.0.2
+   Compiling jni-sys v0.3.1
+   Compiling zerocopy v0.8.61
+   Compiling bytemuck v1.25.2
+   Compiling indexmap v2.14.2
+   Compiling typenum v1.20.1
+   Compiling parking_lot_core v0.9.12
+   Compiling raw-window-handle v0.6.2
+   Compiling jni-sys-macros v0.4.1
+   Compiling zerocopy-derive v0.8.61
+   Compiling version_check v0.9.5
+   Compiling jni-sys v0.4.1
+   Compiling hybrid-array v0.4.15
+   Compiling scopeguard v1.2.0
+   Compiling lock_api v0.4.14
+   Compiling thiserror v1.0.69
+   Compiling simd-adler32 v0.3.10
+   Compiling parking_lot v0.12.5
+   Compiling ndk-sys v0.6.0+11769913
+   Compiling thiserror-impl v1.0.69
+   Compiling polycool v0.4.0
+   Compiling libloading v0.8.9
+   Compiling bytes v1.12.1
+   Compiling semver v1.0.28
+   Compiling crc32fast v1.5.2
+   Compiling profiling v1.0.18
+   Compiling serde v1.0.229
+   Compiling rustc_version v0.4.1
+   Compiling combine v4.6.8
+   Compiling kurbo v0.13.1
+   Compiling toml_edit v0.25.15+spec-1.1.0
+   Compiling crypto-common v0.2.2
+   Compiling color v0.3.3
+   Compiling font-types v0.12.6
+   Compiling serde_derive v1.0.229
+   Compiling euclid v0.22.14
+   Compiling rustc-hash v1.1.0
+   Compiling linebender_resource_handle v0.1.1
+   Compiling same-file v1.0.6
+   Compiling adler2 v2.0.1
+   Compiling rustversion v1.0.23
+   Compiling walkdir v2.5.0
+   Compiling guillotiere v0.7.0
+   Compiling peniko v0.6.1
+   Compiling naga-types v30.0.1
+   Compiling read-fonts v0.41.0
+   Compiling proc-macro-crate v3.5.0
+   Compiling jobserver v0.1.35
+   Compiling jni-macros v0.22.4
+   Compiling ahash v0.8.12
+   Compiling naga v30.0.1
+   Compiling chrono v0.4.45
+   Compiling aho-corasick v1.1.5
+   Compiling find-msvc-tools v0.1.14
+   Compiling unicode-general-category v1.1.0
+   Compiling ash v0.38.0+1.3.281
+   Compiling pkg-config v0.3.34
+   Compiling fearless_simd v0.4.1
+   Compiling bit-vec v0.9.1
+   Compiling regex-syntax v0.8.11
+   Compiling shlex v2.0.1
+   Compiling simdutf8 v0.1.5
+   Compiling zmij v1.0.23
+   Compiling unicode-width v0.2.2
+   Compiling codespan-reporting v0.13.1
+   Compiling simd_cesu8 v1.2.0
+   Compiling cc v1.6.0
+   Compiling vello_common v0.1.0
+   Compiling regex-automata v0.4.18
+   Compiling bit-set v0.10.0
+   Compiling wayland-sys v0.31.11
+   Compiling gridcraft-core v0.12.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/core)
+   Compiling num_enum_derive v0.7.6
+   Compiling jni v0.22.4
+   Compiling miniz_oxide v0.9.1
+   Compiling half v2.7.1
+   Compiling block-buffer v0.12.1
+   Compiling emath v0.36.2
+   Compiling spirv v0.4.0+sdk-1.4.341.0
+   Compiling cpufeatures v0.3.1
+   Compiling zlib-rs v0.6.8
+   Compiling allocator-api2 v0.2.21
+   Compiling uuid v1.27.0
+   Compiling khronos-egl v6.0.0
+   Compiling ndk-context v0.1.1
+   Compiling static_assertions v1.1.0
+   Compiling wgpu-types v30.0.1
+   Compiling flate2 v1.1.10
+   Compiling accesskit v0.24.1
+   Compiling hashbrown v0.16.1
+   Compiling ecolor v0.36.2
+   Compiling digest v0.11.3
+   Compiling num_enum v0.7.6
+   Compiling regex v1.13.1
+   Compiling harfrust v0.12.0
+   Compiling skrifa v0.44.0
+   Compiling vello_cpu v0.1.0
+   Compiling android-activity v0.6.1
+   Compiling dlib v0.5.3
+   Compiling wgpu-hal v30.0.1
+   Compiling unicode-segmentation v1.13.3
+   Compiling either v1.19.0
+   Compiling self_cell v1.3.0
+   Compiling epaint_default_fonts v0.36.2
+   Compiling presser v0.3.1
+   Compiling nohash-hasher v0.2.0
+   Compiling serde_json v1.0.151
+   Compiling epaint v0.36.2
+   Compiling gpu-allocator v0.28.0
+   Compiling itertools v0.15.0
+   Compiling wgpu-naga-bridge v30.0.1
+   Compiling ndk v0.9.0
+   Compiling serde_spanned v1.1.1
+   Compiling winit v0.30.13
+   Compiling ordered-float v5.5.0
+   Compiling android_system_properties v0.1.6
+   Compiling tracing-core v0.1.36
+   Compiling renderdoc-sys v1.1.0
+   Compiling android-properties v0.2.2
+   Compiling pin-project-lite v0.2.17
+   Compiling toml_writer v1.1.2+spec-1.1.0
+   Compiling glow v0.17.0
+   Compiling toml v1.1.6+spec-1.1.0
+   Compiling tracing v0.1.44
+   Compiling egui v0.36.2
+   Compiling sha2 v0.11.0
+   Compiling gridcraft-formula v0.12.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/formula)
+   Compiling miniz_oxide v0.8.9
+   Compiling fdeflate v0.3.7
+   Compiling wgpu-core v30.0.1
+   Compiling litrs v1.0.0
+   Compiling dpi v0.1.2
+   Compiling zune-core v0.5.3
+   Compiling smol_str v0.2.2
+   Compiling pxfm v0.1.30
+   Compiling cursor-icon v1.2.0
+   Compiling moxcms v0.8.1
+   Compiling zune-jpeg v0.5.15
+   Compiling document-features v0.2.12
+   Compiling png v0.18.1
+   Compiling wgpu-core-deps-windows-linux-android v30.0.1
+   Compiling gridcraft-model v0.12.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/model)
+   Compiling inout v0.2.2
+   Compiling wgpu v30.0.1
+   Compiling byteorder-lite v0.1.0
+   Compiling bumpalo v3.20.3
+   Compiling zopfli v0.8.3
+   Compiling image v0.25.10
+   Compiling cipher v0.5.2
+   Compiling gridcraft-functions v0.12.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/functions)
+   Compiling gridcraft-numfmt v0.12.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/numfmt)
+   Compiling rustc-hash v2.1.3
+   Compiling web-time v1.1.0
+   Compiling itoa v1.0.18
+   Compiling cpubits v0.1.1
+   Compiling aes v0.9.3
+   Compiling type-map v0.5.1
+   Compiling accesskit_winit v0.32.2
+   Compiling gridcraft-calc v0.12.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/calc)
+   Compiling zip v3.0.0
+   Compiling sha1 v0.11.0
+   Compiling quick-xml v0.41.0
+   Compiling cesu8 v1.1.0
+   Compiling jni v0.21.1
+   Compiling gridcraft-xlsx v0.12.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/xlsx)
+   Compiling egui-wgpu v0.36.2
+   Compiling gridcraft-chart v0.12.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/chart)
+   Compiling gridcraft-ui-egui v0.12.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/ui-egui)
+   Compiling egui-winit v0.36.2
+   Compiling winresource v0.1.31
+   Compiling env_filter v0.1.4
+   Compiling pollster v1.0.1
+   Compiling gridcraft-pdf v0.12.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/pdf)
+   Compiling android_log-sys v0.3.2
+   Compiling android_logger v0.15.1
+   Compiling gridcraft-engine v0.12.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/engine)
+   Compiling eframe v0.36.2
+   Compiling gridcraft v0.12.1 (/home/runner/work/craft-mobile/craft-mobile/upstream/apps/gridcraft)
+   Compiling craft-ui v0.1.0 (https://github.com/storytold/craft-libs?rev=d27646a5f7c8b4fc85d9dd3213b8c88b58e0088d#d27646a5)
+   Compiling sys-locale v0.3.2
+   Compiling craft-android-glue v0.1.0 (/home/runner/work/craft-mobile/craft-mobile/shared/glue)
+   Compiling arboard v3.99.0 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/arboard)
+   Compiling rfd v0.17.99 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/rfd)
+   Compiling craft-print v0.1.0 (https://github.com/storytold/craft-libs?rev=d27646a5f7c8b4fc85d9dd3213b8c88b58e0088d#d27646a5)
+error[E0599]: no method named `set_html` found for mutable reference `&mut arboard::Clipboard` in the current scope
+   --> apps/gridcraft/src/android_lib.rs:160:64
+    |
+160 |             clipboard.as_mut().ok_or("clipboard unavailable")?.set_html(html, Some(text)).map_err(|e| e.to_string())
+    |                                                                ^^^^^^^^ method not found in `&mut arboard::Clipboard`
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `gridcraft` (lib) due to 1 previous error
+note: If the build failed due to a missing target, you can run this command:
+note: 
+note:     rustup target install aarch64-linux-android
+--- gradle ---
