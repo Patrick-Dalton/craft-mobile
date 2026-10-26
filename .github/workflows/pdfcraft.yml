@@ -54,13 +54,27 @@ jobs:
 
       - name: Build the native library
         working-directory: upstream
-        env:
-          ANDROID_NDK_HOME: ${{ env.ANDROID_NDK_LATEST_HOME }}
         run: |
+          # The runner image sets ANDROID_NDK_LATEST_HOME in the shell, not in the `env` context.
+          export ANDROID_NDK_HOME="$ANDROID_NDK_LATEST_HOME"
+          echo "NDK: $ANDROID_NDK_HOME"
+          set -o pipefail
           cargo ndk -t arm64-v8a -P 26 \
             -o "$GITHUB_WORKSPACE/apps/pdfcraft/android/app/src/main/jniLibs" \
-            build --release -p pdfcraft-android
+            build --release --keep-going -p pdfcraft-android 2>&1 | tee "$GITHUB_WORKSPACE/build.log"
           ls -la "$GITHUB_WORKSPACE/apps/pdfcraft/android/app/src/main/jniLibs/arm64-v8a"
+
+      # Job logs need a signed-in admin to read; a release asset doesn't. On failure, publish the
+      # compiler's errors where anyone (and the person fixing them) can fetch them.
+      - name: Publish the build errors
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          touch build.log
+          { echo "run ${{ github.run_id }}"; grep -n -E '^(error|warning: unused)|^error\[|-->|^\s+\|' build.log | head -n 1500; echo '--- tail ---'; tail -n 200 build.log; } > errors.txt
+          gh release delete pdfcraft-buildlog --cleanup-tag --yes || true
+          gh release create pdfcraft-buildlog errors.txt build.log --title "PdfCraft: log da última falha" --notes "Erros da compilação Android que falhou." --prerelease
 
       - name: App icon
         run: |
