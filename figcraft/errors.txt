@@ -1,0 +1,108 @@
+sha 7aee655aceaa08701bebe25138c78db0ff451f10 run 40398850532
+44:error[E0425]: cannot find value `base` in this scope
+45:  --> apps/figcraft/src/services.rs:32:5
+50:error[E0308]: mismatched types
+51:  --> apps/figcraft/src/services.rs:67:25
+61:error[E0308]: mismatched types
+62:   --> apps/figcraft/src/services.rs:103:30
+69:error[E0425]: cannot find function `read_clipboard` in this scope
+70:   --> apps/figcraft/src/services.rs:285:9
+75:error[E0425]: cannot find function `read_clipboard` in this scope
+76:   --> apps/figcraft/src/services.rs:288:9
+81:error[E0425]: cannot find function `read_clipboard` in this scope
+82:   --> apps/figcraft/src/services.rs:296:19
+89:error: could not compile `figcraft` (lib) due to 6 previous errors
+--- tail ---
+warning: Environment variable `ANDROID_NDK_HOME = "/usr/local/lib/android/sdk/ndk/30.0.16248370"` doesn't match `ANDROID_NDK_ROOT = "/usr/local/lib/android/sdk/ndk/27.3.13750724"`
+    Building arm64-v8a (aarch64-linux-android)
+    Updating crates.io index
+     Locking 17 packages to highest Rust 1.99.1 compatible versions
+      Adding android_log-sys v0.3.2
+      Adding android_logger v0.15.1
+      Adding arboard v3.99.0 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/arboard)
+      Adding cesu8 v1.1.0
+      Adding craft-android-glue v0.1.0 (/home/runner/work/craft-mobile/craft-mobile/shared/glue)
+      Adding env_filter v0.1.4
+      Adding jni v0.21.1
+      Adding rfd v0.17.99 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/rfd)
+      Adding windows-sys v0.45.0
+      Adding windows-targets v0.42.2
+      Adding windows_aarch64_gnullvm v0.42.2
+      Adding windows_aarch64_msvc v0.42.2
+      Adding windows_i686_gnu v0.42.2
+      Adding windows_i686_msvc v0.42.2
+      Adding windows_x86_64_gnu v0.42.2
+      Adding windows_x86_64_gnullvm v0.42.2
+      Adding windows_x86_64_msvc v0.42.2
+   Compiling figcraft-color v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/color)
+   Compiling figcraft-geom v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/geom)
+   Compiling figcraft-text v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/text)
+   Compiling figcraft-ui-egui v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/ui-egui)
+warning: figcraft-text@0.11.2: craft-fonts fonts/latin-manifest.txt skipped: CRAFT_FONTS_DIR=/home/runner/work/craft-mobile/craft-mobile/upstream/../craft-fonts: /home/runner/work/craft-mobile/craft-mobile/upstream/../craft-fonts/fonts/latin-manifest.txt: No such file or directory (os error 2)
+warning: figcraft-text@0.11.2: craft-fonts fonts/manifest.txt skipped: CRAFT_FONTS_DIR=/home/runner/work/craft-mobile/craft-mobile/upstream/../craft-fonts: /home/runner/work/craft-mobile/craft-mobile/upstream/../craft-fonts/fonts/manifest.txt: No such file or directory (os error 2)
+warning: figcraft-text@0.11.2: building without craft-fonts (once it is there, `cargo clean -p figcraft-text` makes the next build use it)
+   Compiling figcraft v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/apps/figcraft)
+   Compiling craft-android-glue v0.1.0 (/home/runner/work/craft-mobile/craft-mobile/shared/glue)
+   Compiling arboard v3.99.0 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/arboard)
+   Compiling figcraft-doc v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/doc)
+   Compiling figcraft-plugin v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/plugin)
+   Compiling rfd v0.17.99 (/home/runner/work/craft-mobile/craft-mobile/shared/shims/rfd)
+   Compiling figcraft-pathops v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/pathops)
+   Compiling figcraft-collab v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/collab)
+   Compiling figcraft-render v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/render)
+   Compiling figcraft-pdf v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/pdf)
+   Compiling figcraft-svg v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/svg)
+   Compiling figcraft-format v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/format)
+   Compiling figcraft-layout v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/layout)
+   Compiling figcraft-engine v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/engine)
+   Compiling figcraft-collab-net v0.11.2 (/home/runner/work/craft-mobile/craft-mobile/upstream/crates/collab-net)
+error[E0425]: cannot find value `base` in this scope
+  --> apps/figcraft/src/services.rs:32:5
+   |
+32 |     base.map(|b| b.join("FigCraft"))
+   |     ^^^^ not found in this scope
+
+error[E0308]: mismatched types
+  --> apps/figcraft/src/services.rs:67:25
+   |
+67 | fn system_language() -> Option<String> {
+   |    ---------------      ^^^^^^^^^^^^^^ expected `Option<String>`, found `()`
+   |    |
+   |    implicitly returns `()` as its body has no tail or `return` expression
+   |
+   = note:   expected enum `Option<std::string::String>`
+           found unit type `()`
+
+error[E0308]: mismatched types
+   --> apps/figcraft/src/services.rs:103:30
+    |
+103 | fn system_reduce_motion() -> bool {
+    |    --------------------      ^^^^ expected `bool`, found `()`
+    |    |
+    |    implicitly returns `()` as its body has no tail or `return` expression
+
+error[E0425]: cannot find function `read_clipboard` in this scope
+   --> apps/figcraft/src/services.rs:285:9
+    |
+285 |         read_clipboard(self.clipboard.as_mut()?, |c| c.get_text().ok())
+    |         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `read_clipboard` in this scope
+   --> apps/figcraft/src/services.rs:288:9
+    |
+288 |         read_clipboard(self.clipboard.as_mut()?, |c| c.get().html().ok())
+    |         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `read_clipboard` in this scope
+   --> apps/figcraft/src/services.rs:296:19
+    |
+296 |         let img = read_clipboard(self.clipboard.as_mut()?, |c| c.get_image().ok())?;
+    |                   ^^^^^^^^^^^^^^ not found in this scope
+
+Some errors have detailed explanations: E0308, E0425.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `figcraft` (lib) due to 6 previous errors
+note: If the build failed due to a missing target, you can run this command:
+note: 
+note:     rustup target install aarch64-linux-android
+--- gradle ---
